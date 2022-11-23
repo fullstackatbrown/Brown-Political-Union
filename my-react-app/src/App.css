@@ -1,0 +1,744 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,700");
+
+/* Variables */
+
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --lonestar: rgba(100, 1, 1, 1);
+  --alto: rgba(217, 217, 217, 1);
+  --white: rgba(255, 255, 255, 1);
+
+  --font-size-s: 14px;
+  --font-size-m: 18px;
+  --font-size-l: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 30px;
+  --font-size-xxxl: 36px;
+  --font-size-xxxxl: 48px;
+
+  --font-family-inter: "Inter";
+}
+
+/* Font */
+.inter-bold-black-30px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-bold-white-48px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-normal-black-30px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxl);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inter-bold-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-s);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-normal-black-20px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inter-bold-white-36px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxl);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-normal-black-18px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inter-bold-white-20px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-l);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-normal-white-18px {
+  color: var(--white);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-m);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inter-normal-black-24px {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  font-style: normal;
+}
+/* Main */
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.frame-1 {
+  align-items: center;
+  border: 1px none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 1500px;
+}
+
+.flex-col {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 3px;
+  min-height: 2962px;
+  width: 1283px;
+}
+
+.flex-col-1 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 846px;
+  width: 1283px;
+}
+
+.overlap-group2{
+  height: 586px;
+  position: relative;
+  width: 1500px;
+  margin-left: -80px;
+}
+
+.hosted-virtual-tour-photo-option-1 {
+  height: 474px;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 111px;
+  width: 1500px;
+}
+
+.rectangle-1 {
+  background-color: var(--lonestar);
+  border: 1px none;
+  height: 112px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 1500px;
+}
+
+.title {
+  left: 62px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+}
+
+.about-us {
+  left: 642px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.events {
+  left: 762px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.constitution {
+  left: 860px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.parties {
+  left: 1014px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.leadership {
+  left: 1115px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.place {
+  left: 1256px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 55px;
+}
+
+.rectangle-2 {
+  background-color: #00000099;
+  border: 1px none;
+  height: 476px;
+  left: 0;
+  position: absolute;
+  top: 110px;
+  width: 1500px;
+}
+
+.fostering-ideologica {
+  left: 338px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 251px;
+  width: 832px;
+}
+
+.about-us-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 209px;
+  margin-top: 33px;
+  min-height: 36px;
+}
+
+.lids {
+  align-self: center;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 209px;
+  margin-top: 16px;
+  min-height: 114px;
+  width: 906px;
+}
+
+.events-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 209px;
+  margin-top: 25px;
+  min-height: 36px;
+}
+
+.flex-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 76px;
+  height: 397px;
+  margin-left: 129px;
+  margin-top: 34px;
+  min-width: 764px;
+}
+
+.rectangle-4 {
+  align-self: center;
+  background-color: var(--alto);
+  border: 1px none;
+  height: 396px;
+  width: 271px;
+}
+
+.flex-col-2 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  min-height: 393px;
+  width: 417px;
+}
+
+.in-person {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+}
+
+.social-justice {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 25px;
+  width: 413px;
+}
+
+.believe {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 28px;
+  width: 450px;
+  margin-top: -5px;
+}
+
+.believe-date {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 10px;
+  width: 450px;
+  margin-top: -5px;
+}
+
+.overlap-group1 {
+  align-items: flex-start;
+  background-color: var(--lonestar);
+  border-radius: 19px;
+  display: flex;
+  height: 32px;
+  margin-top: 1px;
+  min-width: 97px;
+  padding: 5px 7px;
+}
+
+.place-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+  width: 72px;
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+.flex-col-3 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-left: 49px;
+  margin-top: 138px;
+  min-height: 1547px;
+  width: 914px;
+}
+
+.constitution-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 36px;
+}
+
+.lids-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 20px;
+  min-height: 114px;
+  width: 906px;
+}
+
+.overlap-group {
+  align-items: flex-start;
+  align-self: flex-end;
+  background-color: var(--lonestar);
+  border-radius: 19px;
+  display: flex;
+  height: 20px;
+  justify-content: flex-end;
+  margin-right: 37px;
+  margin-top: 20px;
+  width: 108px;
+  padding: 12px;
+}
+
+.link-to-full {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 18px;
+  width: 105px;
+}
+
+.parties-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 39px;
+  margin-left: 8px;
+  min-height: 36px;
+}
+
+.lids-2 {
+  align-self: flex-end;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 16px;
+  min-height: 114px;
+  width: 906px;
+}
+
+.leadership-1 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: 67px;
+  margin-left: 8px;
+  min-height: 36px;
+}
+
+.block-blank {
+  background-color: var(--white);
+  height: 594px;
+}
+
+.block-blank-2 {
+  background-color: var(--white);
+  height: 244px;
+}
+
+.bio-container {
+  align-items: flex-start;
+  align-self: center;
+  display: flex;
+  gap: 99px;
+  height: 384px;
+  margin-right: 1px;
+  margin-top: 68px;
+  min-width: 897px;
+  position: relative;
+}
+
+.bio-container-1 {
+  align-items: flex-start;
+  align-self: center;
+  display: flex;
+  height: 384px;
+  margin-left: 3px;
+  margin-top: 68px;
+  min-width: 897px;
+  position: relative;
+}
+
+.place-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 9px;
+  margin-top: 66px;
+  min-height: 36px;
+}
+
+.flex-row-1 {
+  align-items: flex-end;
+  display: flex;
+  height: 176px;
+  margin-left: 78px;
+  margin-top: 41px;
+  min-width: 840px;
+}
+
+.flex-col-4 {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  min-height: 176px;
+  width: 160px;
+}
+
+.free-mail-icon {
+  height: 122px;
+  margin-right: 4px;
+  object-fit: cover;
+  width: 122px;
+}
+
+.bpubrown {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 160px;
+}
+
+.flex-col-5 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-left: 148px;
+  min-height: 157px;
+  width: 210px;
+}
+
+.icon-instagram {
+  height: 83px;
+  margin-right: 11px;
+  object-fit: cover;
+  width: 83px;
+}
+
+.brownpoliticalunion{
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 210px;
+  text-align: center;
+}
+
+.flex-col-6 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+  margin-left: 112px;
+  min-height: 160px;
+  width: 210px;
+}
+
+.random-x {
+  height: 90px;
+  margin-right: 8px;
+  object-fit: cover;
+  width: 90px;
+}
+
+.brownpoliticalunion-1{
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 210px;
+}
+
+.overlap-group3 {
+  align-items: flex-start;
+  background-color: var(--lonestar);
+  display: flex;
+  gap: 391px;
+  height: 347px;
+  justify-content: flex-end;
+  margin-left: -400px;
+  margin-top: 74px;
+  min-width: 1500px;
+  padding: 65px 134px;
+}
+
+.flex-col-7 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 187px;
+  width: 341px;
+  left: -80px;
+}
+
+.bpu-logo {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 58px;
+}
+
+.lids-3 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 97px;
+  width: 341px;
+}
+
+.group-3 {
+  align-items: flex-start;
+  display: flex;
+  gap: 33px;
+  height: 160px;
+  margin-top: 1px;
+  min-width: 278px;
+}
+
+.flex-col-8 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-height: 187px;
+  width: 341px;
+}
+
+.about-us-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 89px;
+}
+
+.constitution-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 123px;
+}
+
+.parties-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 1px;
+  min-height: 24px;
+  min-width: 70px;
+}
+
+.flex-col-9 {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-top: -1px;
+  min-height: 160px;
+  width: 110px;
+}
+
+.events-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 1px;
+  min-height: 24px;
+  min-width: 110px;
+}
+
+.leadership-2 {
+  letter-spacing: 0;
+  line-height: normal;
+  min-height: 24px;
+  min-width: 110px;
+}
+
+.place-3 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 1px;
+  min-width: 79px;
+  min-height: 24px;
+}
+
+.bio1-3 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 384px;
+  width: 233px;
+}
+
+.eclipse-1 {
+  background-color: var(--alto);
+  border: 1px none;
+  border-radius: 70px;
+  height: 139px;
+  width: 139px;
+}
+
+.place-4 {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-left: 2px;
+  margin-top: 15px;
+  min-height: 36px;
+  min-width: 85px;
+}
+
+.role {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 5px;
+  min-height: 29px;
+  min-width: 50px;
+}
+
+.bio-lid {
+  letter-spacing: 0;
+  line-height: normal;
+  margin-right: 6px;
+  margin-top: 11px;
+  min-height: 153px;
+  text-align: center;
+  width: 227px;
+}
+
+.bio1-3.bio1-1 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 102px;
+  min-height: 384px;
+  width: 233px;
+}
+
+.bio1-3.bio1-2 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  min-height: 384px;
+  width: 233px;
+}
