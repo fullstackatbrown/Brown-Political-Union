@@ -1,11 +1,11 @@
 const Navbar = () => {
     return (
-        <section class="h-32 bg-[#650202]">
-            <div class="flex justify-start text-5xl text-white font-bold inline-block pl-10 pt-8">
+        <section className="h-32 bg-custom_brown">
+            <div className="float-left text-5xl text-white font-bold inline-block pl-10 pt-8">
                 BPU
             </div>
 
-            <div className="flex justify-end pr-10">
+            <div className="float-right pt-10 pr-10">
                 <div className="text-2xl text-white font-bold inline-block pl-10">
                     About Us
                 </div>
