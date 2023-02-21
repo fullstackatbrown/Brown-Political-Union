@@ -1,8 +1,8 @@
 const AboutSection = ({ subtitle, title, description, image, reverse }) => {
   return (
     <section
-      class={`flex ${
-        reverse ? "flex-row-reverse" : ""
+      class={`flex flex-col-reverse ${
+        reverse ? "md:flex-row-reverse" : "md:flex-row"
       } justify-center align-center w-auto gap-20 mb-32`}
     >
       <div class="flex flex-col justify-center">
