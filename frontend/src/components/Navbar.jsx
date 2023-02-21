@@ -1,6 +1,6 @@
 const Navbar = () => {
     return (
-        <section className="h-32 bg-custom_brown">
+        <section className="h-32 bg-[#650202]">
             <div className="float-left text-5xl text-white font-bold inline-block pl-10 pt-8">
                 BPU
             </div>
