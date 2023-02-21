@@ -1,14 +1,10 @@
-import Navbar from "./components/Navbar";
 import EventHeader from "./components/EventHeader";
 import Event from "./components/Event";
 import Hero from "./components/Hero";
-import Footnote from "./components/Footnote";
-import "./App.css";
 
 function App() {
   return (
-    <main class="h-screen">
-      <Navbar />
+    <>
       <Hero />
       <div class="mt-32 pb-16 mx-auto max-w-screen-md px-8">
         <EventHeader text="Upcoming Events" />
@@ -38,8 +34,7 @@ function App() {
           when="Jan 22nd @2PM"
         />
       </div>
-      <Footnote />
-    </main>
+    </>
   );
 }
 
