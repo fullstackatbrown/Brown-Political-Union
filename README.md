@@ -5,12 +5,13 @@ The Brown Political Union is a collegiate debate society. They’re looking for 
 
 ## User Story 1
 There should be the following tabs:
--About Page
--Events*
--Constitution*
--Parties [Political Affiliation– Text submitted by BPU]
--Leadership*
--Contact*
+1. Home Page
+2. About Page
+3. Events*
+4. Constitution*
+5. Parties [Political Affiliation– Text submitted by BPU]
+6. Leadership*
+7. Contact*
 
 Should be able to navigate between tabs.
 
