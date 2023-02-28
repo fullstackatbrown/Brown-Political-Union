@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Footnote from "./components/Footnote";
 import Navbar from "./components/Navbar";
 import AboutUs from "./components/AboutUs";
+import Events from "./components/Events";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   { path: "/about", element: <AboutUs /> },
+  { path: "/events", element: <Events /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
