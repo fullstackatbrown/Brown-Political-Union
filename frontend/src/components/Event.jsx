@@ -1,6 +1,6 @@
 const Event = ({ image, virtual, title, description, where, when }) => {
   return (
-    <div class="flex flex-col md:flex-row mb-12">
+    <div class="flex flex-col md:flex-row mb-12 drop-shadow-lg">
       <div class="flex mr-16 justify-center align-center w-full md:w-auto">
         <img class="object-cover md:h-96 w-full md:w-96 rounded-md" src={image} />
       </div>

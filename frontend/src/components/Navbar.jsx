@@ -1,32 +1,33 @@
-const Navbar = () => {
-    return (
-        <section className="h-32 bg-custom_brown">
-            <div className="float-left text-5xl text-white font-bold inline-block pl-10 pt-8">
-                BPU
-            </div>
+const buttons = [
+  { name: "About Us", link: "/about" },
+  { name: "Events", link: "/events" },
+  { name: "Constitution", link: "/constitution" },
+  { name: "Parties", link: "/parties" },
+  { name: "Leadership", link: "/leadership" },
+  { name: "Contact", link: "/contact" },
+];
 
-            <div className="float-right pt-10 pr-10">
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    About Us
-                </div>
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    Events
-                </div>
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    Constitution
-                </div>
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    Parties
-                </div>
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    Leadership
-                </div>
-                <div className="text-2xl text-white font-bold inline-block pl-10">
-                    Contact
-                </div>
-            </div>
-        </section>
-    );
-}
+const NavbarButton = ({ name, link }) => {
+  return (
+    <a class="text-lg text-white font-bold" href={link}>
+      {name}
+    </a>
+  );
+};
+
+const Navbar = () => {
+  return (
+    <section class="md:fixed flex w-full bg-[#650202] justify-between items-center flex-wrap top-0 px-5 md:px-20 py-3 z-50 drop-shadow-lg">
+      <a class="text-3xl md:text-5xl text-white font-bold" href="/">
+        BPU
+      </a>
+      <div class="flex flex-wrap gap-8 mt-5 md:mt-0">
+        {buttons.map(({ name, link }) => (
+          <NavbarButton name={name} link={link} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Navbar;
