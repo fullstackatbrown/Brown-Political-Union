@@ -1,5 +1,5 @@
-import { useState } from "react";
-import events from "../data/events";
+import { useState, useEffect } from "react";
+import { useFirebase } from "../firebase";
 
 const EventCard = ({ image, virtual, title, description, where, when }) => {
   return (
@@ -53,6 +53,17 @@ const UpcomingPastButton = ({ upcoming, setUpcoming }) => {
 
 const Events = () => {
   const [upcoming, setUpcoming] = useState(true);
+  const firebase = useFirebase();
+  const [events, setEvents] = useState([]);
+  const currentDate = new Date();
+
+  useEffect(() => {
+    async function fetch() {
+      setEvents(await firebase.getAllEvents());
+    }
+    fetch();
+  }, [firebase]);
+
   return (
     <div>
       <div class="mt-40 mx-auto max-w-screen-md px-8">
@@ -65,8 +76,10 @@ const Events = () => {
       </div>
       <div class="grid pb-16 mx-auto max-w-screen-lg px-8 grid-cols-3 gap-8">
         {events
-          .filter(
-            (event) => event.category === (upcoming ? "upcoming" : "past")
+          .filter((event) =>
+            upcoming
+              ? event.when.toDate() > currentDate
+              : event.when.toDate() <= currentDate
           )
           .map((event, i) => {
             return (
@@ -77,7 +90,7 @@ const Events = () => {
                 title={event.title}
                 description={event.description}
                 where={event.where}
-                when={event.when}
+                when={event.when.toDate().toDateString()}
               />
             );
           })}

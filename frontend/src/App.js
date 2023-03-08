@@ -1,47 +1,26 @@
-import EventHeader from "./components/EventHeader";
-import Event from "./components/Event";
-import Hero from "./components/Hero";
-import events from "./data/events";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Footnote from "./components/Footnote";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import AboutUs from "./components/AboutUs";
+import Events from "./components/Events";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  { path: "/about", element: <AboutUs /> },
+  { path: "/events", element: <Events /> },
+]);
 
 function App() {
   return (
-    <>
-      <Hero />
-      <div class="mt-32 pb-16 mx-auto max-w-screen-md px-8">
-        <EventHeader text="Upcoming Events" />
-        {events
-          .filter((event) => event.category === "upcoming")
-          .map((event, i) => {
-            return (
-              <Event
-                key={i}
-                image={event.image}
-                virtual={event.virtual}
-                title={event.title}
-                description={event.description}
-                where={event.where}
-                when={event.when}
-              />
-            );
-          })}
-        <EventHeader text="Past Events" />
-        {events
-          .filter((event) => event.category === "past")
-          .map((event, i) => {
-            return (
-              <Event
-                key={i}
-                image={event.image}
-                virtual={event.virtual}
-                title={event.title}
-                description={event.description}
-                where={event.where}
-                when={event.when}
-              />
-            );
-          })}
-      </div>
-    </>
+    <main class="h-screen">
+      <Navbar />
+      <RouterProvider router={router} />
+      <Footnote />
+    </main>
   );
 }
 
