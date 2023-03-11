@@ -3,29 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Footnote from "./components/Footnote";
-import Navbar from "./components/Navbar";
-import AboutUs from "./components/AboutUs";
-import Events from "./components/Events";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  { path: "/about", element: <AboutUs /> },
-  { path: "/events", element: <Events /> },
-]);
+import { FirebaseContext, Firebase } from "./firebase";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <main class="h-screen">
-      <Navbar />
-      <RouterProvider router={router} />
-      <Footnote />
-    </main>
+    <FirebaseContext.Provider value={new Firebase()}>
+      <App />
+    </FirebaseContext.Provider>
   </React.StrictMode>
 );
 
