@@ -1,0 +1,48 @@
+[
+  {
+    "header": "Article 1:  Name of Student Group",
+    "info":
+            [
+              {
+                "section" : "Section 1",
+                "data" : "The name of this organization shall be the Brown Political Union."
+              },
+              {
+                "section" : "Section 2",
+                "data" : "This organization may informally be called “the BPU” or “the Union."
+              }
+            ]
+  },
+  {
+    "header": "Article 2: Statement of Purpose:",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "The purpose of the Brown Political Union shall be to provide students with a multi partisan\nforum for political discourse and ideological engagement through debates,\nspeaker series, discussions, and other events."
+      },
+      {
+        "section" : "Section 2",
+        "data" : "The Union shall be open to any and all political viewpoints in its capacity as a forum."
+      },
+      {
+        "section" : "Section 3",
+        "data" : "In pursuit of communal betterment, the Union shall strive to promote political education\nand involvement within the Brown community."
+      },
+      {
+        "section" : "Section 4",
+        "data" : "The Brown Political Union and all of its affiliated events shall be in compliance with\nall federal laws and University regulations presently in force and hereafter enacted."
+      }
+    ]
+  },
+  {
+    "header": "Article 3:  Name of Student Group",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "The Brown Political Union shall maintain a multi-party structure to mediate political\nand ideological discourse and facilitate the expression of diverse viewpoints in an ordered setting.\nThese parties shall evolve and be maintained to reflect the ideological leanings of current Union\nmembers, who shall be responsible for party formation, governance, and dissolution."
+      }
+    ]
+  }
+]
