@@ -2,7 +2,7 @@ import { SocialIcon } from 'react-social-icons';
 
 const Footnote = () => {
     return (
-        <section className="h-72 bg-custom_brown">
+        <section className="h-72 bg-[#650202]">
             <div className="float-left inline-block pl-10 pt-12">
                 <div className="text-5xl text-white font-bold">
                     BPU

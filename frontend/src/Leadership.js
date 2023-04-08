@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import Footnote from "./components/Footnote";
 import './App.css';
 import Bio from "./components/Bio";
 import leadership from "./data/leadership.json";
@@ -28,7 +27,6 @@ function Leadership() {
                     })}
             </div>
             <div className="h-32"> </div>
-            <Footnote></Footnote>
         </div>
     );
 }
