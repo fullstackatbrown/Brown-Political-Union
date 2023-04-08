@@ -36,12 +36,172 @@
     ]
   },
   {
-    "header": "Article 3:  Name of Student Group",
+    "header": "Article 3:  Party Structure",
     "info":
     [
       {
         "section" : "Section 1",
         "data" : "The Brown Political Union shall maintain a multi-party structure to mediate political\nand ideological discourse and facilitate the expression of diverse viewpoints in an ordered setting.\nThese parties shall evolve and be maintained to reflect the ideological leanings of current Union\nmembers, who shall be responsible for party formation, governance, and dissolution."
+      }
+    ]
+  },
+  {
+    "header": "Article 4: Party Formation and Dissolution\n",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Upon joining the Brown Political Union, members shall be unaffiliated with a Party. Members may join an existing Party, form a new Party, or remain unaffiliated. "
+      },
+      {
+        "section" : "Section 2",
+        "data" : "Members wishing to form a new Party within the Brown Political Union shall submit a petition to the Speaker of the Union. The petition shall list the valid number of signatures to meet the Party Petition Qualifications."
+      },
+      {
+        "section" : "Section 3",
+        "data" : "The Party Petition Qualifications shall be at least three members of the Brown Political Union."
+      },
+      {
+        "section" : "Section 4",
+        "data" : "The Speaker of the Brown Political Union shall verify the Party Petition within one week of receiving it. Following its verification, members who signed the petition will automatically forfeit any other Party membership and become members of the newly formed Party. The members of the new Party shall elect a Floor Leader to represent and lead the Party within ten days of the Party’s verification by the Speaker."
+      },
+      {
+        "section" : "Section 5",
+        "data" : "Should membership of any Party fall below three members for two consecutive semesters, then that Party shall receive a notice of impending dissolution from the Executive Board no later than six weeks before the final day of the second consecutive semester. Should the Party increase its membership to meet Party Petition Qualifications before the end of the semester, then that Party shall retain its Party status. Otherwise, the Party shall cease to be recognized as a Party of the Union and its members shall be unaffiliated with a Party. "
+      },
+      {
+        "section" : "Section 1",
+        "data" : ""
+      }
+    ]
+  },
+  {
+    "header": "Article 5: Governance of Parties",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Parties shall maintain the right to determine their own structure, internal procedures, and leadership so long as none violate the policies put forth by this Constitution or future amendments to it. The Union Executive Board shall not intervene in the internal governance of parties except in the instance when the actions of a Party are deemed to be in conflict with the core principles or goals of the Union as set forth in this Constitution. In such a case, the Executive Board can, by a unanimous vote only, overrule the actions of party leadership. Such a vote shall only be held after a meeting of the Union Executive Board and the leadership of the Party in question, during which every effort shall be made to achieve a resolution amenable to all."
+      }
+    ]
+  },
+  {
+    "header": "Article 6:  Statement of Non-Partisanship",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "The Brown Political Union is committed to fostering a forum that respects and gives audience to all perspectives of all members and other discussion participants. With this goal in mind, participants will be encouraged to constructively challenge and probe the ideas of others while examining their own preconceptions in such a way that encourages all parties to deepen their thoughts and understanding of the topic at hand. The Brown Political Union does not and shall not endorse any particular point of view offered in the course of discussion and is hereby deemed a neutral entity. Any views expressed by Executive Board officers and other members represent the individual views of those persons and not the official position of the Brown Political Union, irrespective of their title with respect to Brown Political Union leadership."
+      }
+    ]
+  },
+  {
+    "header": "Article 7: Membership",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Eligibility to the Brown Political Union is open to all full-time undergraduate members of the Brown community and does not discriminate on the basis of race, color, religion, age, national or ethnic origin, disability, status as a veteran, sexual orientation, gender identity, gender expression, or sex. Majority membership consists of full-time undergraduate students."
+      },
+      {
+        "section" : "Section 2",
+        "data" : "Membership in the Union shall be divided into the classes of Full Members and Honorary Members."
+      },
+      {
+        "section" : "Section 3",
+        "data" : "Full Membership in the Union shall be granted to any current Brown University student, faculty, or staff who has attended at least one Union meeting or event and has expressed a desire for membership status to Union leadership. Full Membership shall expire upon graduation or termination of student, faculty, or staff status, at which point the individual may be considered for Honorary Membership."
+      },
+      {
+        "section": "Section 4",
+        "data": "The Executive Board may grant Honorary Membership to any non-member of the Brown Political Union for any length of time it wishes. Honorary Members shall enjoy the same participatory privileges as Full Members, but shall not have voting privileges nor the right to hold office. "
+      }
+    ]
+  },
+  {
+    "header": "Article 8: Leadership and Officers",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "The Brown Political Union shall be governed by an Executive Board consisting of the President, Vice President, Speaker, Treasurer, Secretary, and Director of Membership and Public Relations, as well as the chairmen of each Party, whose roles are defined in subsequent sections. These Executive Board officers constitute “Union leadership.”"
+      },
+      {
+        "section" : "Section 2",
+        "data" : "All Executive Board officers must be current Brown University undergraduate students."
+      },
+      {
+        "section" : "Section 3",
+        "data" : "The Executive Board shall meet on a weekly basis to discuss matters of importance to the Union."
+      },
+      {
+        "section" : "Section 4",
+        "data" : "The term of office for each Executive Board member shall be one year, beginning at the first meeting of each academic year."
+      },
+      {
+        "section" : "Section 5",
+        "data" : "There shall be a three-term limit on the number of terms an officer can fill"
+      },
+      {
+        "section" : "Section 6",
+        "data" : "The President shall be elected to preside over Executive Board Meetings; to set the Union’s agenda and direct its implementation; to supervise and coordinate the actions of other officers; to ensure the success and continuity of the Union; to collaborate with the Vice President on long-term planning and day-to-day operations; to regularly communicate with the Union body through email announcements, updates, reminders, and newsletters; to appoint Executive Board officers in the event of a vacancy; to appoint members to oversee or lead specific projects, if necessary; and to cast the tie-breaking vote in the case of an evenly divided Executive Board. "
+      },
+      {
+        "section" : "Section 7",
+        "data" : "The Vice President shall be elected to oversee special projects and initiatives; to serve as the primary liaison between the Brown Political Union and other on- and off-campus contacts; to spearhead speaker series programming including, but not limited to, guest procurement, event organization, and any necessary travel and accommodation arrangements; to assist in the oversight, design, and execution of Executive Board tasks; to assist the President with administrative tasks; to collaborate with the President on long-term planning and day-to-day operations; and to succeed the President in the event of a vacancy."
+      },
+      {
+        "section" : "Section 8",
+        "data" : "The Speaker shall be elected to organize debates and dictate all matters related to their content, logistics, and procedure; to preside over the debating floor at any Union-organized debate; to serve as the liaison for Party Leaders within the Union; to procure guests for debates; to advise the Executive Board on procedural and constitutional matters; and to collaborate with the Executive Board on other tasks relevant to the success of the Brown Political Union."
+      },
+      {
+        "section" : "Section 9",
+        "data" : "The Treasurer shall be elected to serve as the liaison with the Student Activities Office (SAO); to track, balance, and report on all financial accounts; to estimate the costs of projects and initiatives; to lead fundraising initiatives; to create budget proposals in collaboration with the President and Vice President; to submit a semesterly budget proposal to the Executive Board for a vote; and to present quarterly financial reports to the Executive Board."
+      },
+      {
+        "section" : "Section 10",
+        "data" : "The Secretary shall be elected to record and submit minutes of all BPU events, including Executive Board meetings, body meetings, debates, and speaker series; to serve as the primary alumni liaison; to receive statements of intent from members running for office and add candidates’ names to the ballot; and to assist the Executive Board on other tasks relevant to the success of the Brown Political Union."
+      },
+      {
+        "section" : "Section 11",
+        "data" : "The Director of Membership and Public Relations shall be appointed by the Executive Board each academic year to curate the image of the Brown Political Union; to manage the BPU’s website, social media, and branding efforts; to lead outreach initiatives to recruit new members; to facilitate new member integration; and to organize social events for the BPU."
+      },
+      {
+        "section" : "Section 12",
+        "data" : "The chairs of each Party shall have full voting privileges before Executive Board matters and shall act as representatives for their Parties at Executive Board meetings . Upon the formation or dissolution of a Party, the respective chair’s status as an Executive Board member shall change accordingly and with immediate effect."
+      }
+    ]
+  },
+  {
+    "header": "Article 9:  Elections",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Elections shall take place one week before the first day of the Reading Period in the second semester of each academic year, as defined by Brown University. The Executive Board may, by ⅔ majority vote, set a different date for elections, provided it gives at least 24-hour notice to the Union body."
+      },
+      {
+        "section" : "Section 2",
+        "data" : "The Executive Board shall set the terms of elections (including, but not limited to, the time, location, and format) by majority vote, providing public notice of such terms to the member body."
+      },
+      {
+        "section" : "Section 3",
+        "data" : "Each member shall have one vote in elections for Executive Board, to be casted on their own behalf."
+      },
+      {
+        "section" : "Section 4",
+        "data" : "To qualify for office, a candidate shall have attended at least three Union body meetings and shown consistent dedication to the organization and well-being of the BPU."
+      },
+      {
+        "section" : "Section 5",
+        "data" : "Members seeking nomination for office must declare their candidacy no earlier than seven days before the date of elections through a written statement of intent submitted to the Secretary. Upon receipt of such a statement, the Secretary shall add the candidate’s name to the ballot under the appropriate office designation. The ballot shall be kept public to the Union body, to whom candidates may begin campaigning after the addition of their name to the ballot."
+      },
+      {
+        "section" : "Section 6",
+        "data" : "To be elected, a candidate must receive a majority of votes cast. If no candidate receives a majority on the first ballot, runoffs shall be conducted between the top two vote-getters. If the tie persists, the winner shall be decided by majority vote of the Executive Board."
+      },
+      {
+        "section" : "Section 7",
+        "data" : "In the event of a vacancy in office, the President shall appoint a member to fill the vacancy at their discretion."
       }
     ]
   }
