@@ -22,8 +22,8 @@ const Navbar = () => {
         BPU
       </a>
       <div class="flex flex-wrap gap-8 mt-5 md:mt-0">
-        {buttons.map(({ name, link }) => (
-          <NavbarButton name={name} link={link} />
+        {buttons.map(({ name, link }, i) => (
+          <NavbarButton name={name} link={link} key={i} />
         ))}
       </div>
     </section>

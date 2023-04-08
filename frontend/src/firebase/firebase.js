@@ -1,5 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, getDocs } from "firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getFirestore,
+  doc,
+  collection,
+  query,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,10 +21,12 @@ const config = {
 
 export class Firebase {
   firestore;
+  auth;
 
   constructor() {
     const app = initializeApp(config);
     this.firestore = getFirestore(app);
+    this.auth = getAuth(app);
   }
 
   getAllEvents = async () => {
@@ -27,5 +37,31 @@ export class Firebase {
       ret.push(doc.data());
     });
     return ret;
+  };
+
+  getAllEventDocs = async () => {
+    const q = query(collection(this.firestore, "events"));
+    const querySnapshot = await getDocs(q);
+    let ret = [];
+    querySnapshot.forEach((doc) => {
+      ret.push(doc);
+    });
+    return ret;
+  };
+
+  modifyEvent = async (id, newEvent) => {
+    const documentRef = doc(this.firestore, "events", id);
+    await updateDoc(documentRef, newEvent);
+  };
+
+  signIn = async (email, password) => {
+    signInWithEmailAndPassword(this.auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        return user;
+      })
+      .catch((error) => {
+        console.error(error.code, error.message);
+      });
   };
 }
