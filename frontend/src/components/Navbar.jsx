@@ -5,6 +5,7 @@ const buttons = [
   { name: "Parties", link: "/parties" },
   { name: "Leadership", link: "/leadership" },
   { name: "Contact", link: "/contact" },
+  { name: "Login", link: "/admin" }
 ];
 
 const NavbarButton = ({ name, link }) => {

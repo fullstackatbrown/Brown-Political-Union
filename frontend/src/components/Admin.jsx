@@ -1,130 +1,20 @@
 import { useState, useEffect } from "react";
 import { useFirebase } from "../firebase";
-import { Timestamp } from "firebase/firestore";
-
-const ModifiableEventCard = ({
-  firebase,
-  id,
-  image,
-  virtual,
-  title,
-  description,
-  where,
-  when,
-}) => {
-  const [currentImage, setCurrentImage] = useState(image);
-  const [newEvent, setNewEvent] = useState({
-    description: description,
-    image: image,
-    title: title,
-    virtual: virtual,
-    when: when,
-    where: where,
-  });
-  const handleInputChange = (event) => {
-    event.preventDefault();
-    let value = event.target.value;
-    if (event.target.name === "virtual") {
-      value = value === "virtual";
-    } else if (event.target.name === "when") {
-      let tempWhen = new Date(value);
-      tempWhen.setHours(tempWhen.getHours() + 5);
-      value = Timestamp.fromDate(new Date(tempWhen));
-    }
-    setNewEvent({
-      ...newEvent,
-      [event.target.name]: value,
-    });
-  };
-
-  const modify = async () => {
-    setCurrentImage(newEvent.image);
-    firebase.modifyEvent(id, newEvent);
-  };
-
-  let tempWhen = when;
-  tempWhen.setHours(when.getHours() - 5);
-  const date = tempWhen.toISOString().split("T")[0];
-
-  return (
-    <div class="bg-gray-200 rounded-md flex justify-between">
-      <div class="pt-2 pb-4 px-4">
-        <span class="font-bold">Title: </span>
-        <input
-          name="title"
-          type="text"
-          defaultValue={title}
-          placeholder={title}
-          class="font-bold text-2xl mb-1 p-1"
-          onChange={handleInputChange}
-        ></input>
-        <div class="my-2">
-          <span class="font-bold">Mode: </span>
-          <select
-            name="virtual"
-            class="bg-white p-1"
-            defaultValue={virtual ? "virtual" : "in-person"}
-            onChange={handleInputChange}
-          >
-            <option value="virtual">Virtual</option>
-            <option value="in-person">In-Person</option>
-          </select>
-        </div>
-        <span class="font-bold">Description: </span>
-        <textarea
-          name="description"
-          rows="6"
-          cols="40"
-          defaultValue={description}
-          class="mb-1 p-1"
-          onChange={handleInputChange}
-        ></textarea>
-        <p class="my-2">
-          <span class="font-bold">Where: </span>
-          <input
-            name="where"
-            onChange={handleInputChange}
-            type="text"
-            defaultValue={where}
-            class="p-1"
-          ></input>
-        </p>
-        <p class="my-2">
-          <span class="font-bold">When: </span>
-          <input
-            name="when"
-            onChange={handleInputChange}
-            type="date"
-            defaultValue={date}
-          ></input>
-        </p>
-        <p class="my-2">
-          <span class="font-bold">Image: </span>
-          <input
-            class="w-100"
-            name="image"
-            onChange={handleInputChange}
-            type="text"
-            defaultValue={image}
-          ></input>
-        </p>
-        <button
-          class="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
-          onClick={modify}
-        >
-          Modify
-        </button>
-      </div>
-      <img class="rounded-t-md w-1/2" src={currentImage} />
-    </div>
-  );
-};
+import ModifiableEventCard from "./Modifiable/ModifiableEventCard";
+import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
+import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard"
+import React from 'react';
+import "../App.css"
 
 const Dashboard = ({ firebase, signOut }) => {
   const [events, setEvents] = useState([]);
+  const [parties, setParties] = useState([]);
+  const [leader, setLeaders] = useState([]);
   useEffect(() => {
     async function fetch() {
       setEvents((await firebase.getAllEventDocs()).sort());
+      setParties((await firebase.getAllGenDocs("parties")).sort());
+      setLeaders((await firebase.getAllGenDocs("leadership")).sort());
     }
     fetch();
   }, [firebase]);
@@ -151,6 +41,39 @@ const Dashboard = ({ firebase, signOut }) => {
           );
         })}
       </div>
+      <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
+        {parties.map((part, i) => {
+          const data = part.data();
+          return (
+              <div className="my-2" key={i}>
+                <ModifiablePartiesCard
+                    firebase={firebase}
+                    id={part.id}
+                    name={data.name}
+                    image={data.image}
+                    blurbs={data.blurbs}
+                />
+              </div>
+          );
+        })}
+      </div>
+      <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
+        {leader.map((part, i) => {
+          const data = part.data();
+          return (
+              <div className="my-2" key={i}>
+                <ModifiableLeadCard
+                    firebase={firebase}
+                    id={part.id}
+                    name={data.name}
+                    image={data.image}
+                    position={data.position}
+                    blurbs={data.blurbs}
+                />
+              </div>
+          );
+        })}
+      </div>
       <button
         class="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202]"
         onClick={signOut}
@@ -167,7 +90,7 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
     const name = event.target.name;
     if (name === "email") {
       setEmail(event.target.value);
-    } else if (name == "password") {
+    } else if (name === "password") {
       setPassword(event.target.value);
     }
   };
@@ -177,19 +100,19 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
       <h3 class="font-bold text-3xl">Admin Login</h3>
       <div class="flex flex-col mb-4">
         <input
-          type="text"
-          name="email"
-          class="border-2 my-4 p-2 border-slate-400"
-          placeholder="Email address"
-          onChange={handleInputChange}
-        ></input>
+        type="text"
+        name="email"
+        class="border-2 my-4 p-2 border-slate-400"
+        placeholder="Email address"
+        onChange={handleInputChange}
+        />
         <input
-          type="password"
-          name="password"
-          class="border-2 p-2 border-slate-400"
-          placeholder="Password"
-          onChange={handleInputChange}
-        ></input>
+        type="password"
+        name="password"
+        class="border-2 p-2 border-slate-400"
+        placeholder="Password"
+        onChange={handleInputChange}
+        />
       </div>
       <button
         class="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202]"
@@ -197,6 +120,9 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
       >
         Sign in
       </button>
+      <div className="h-32">
+
+      </div>
     </section>
   );
 };

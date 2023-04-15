@@ -1,32 +1,25 @@
+import React from 'react';
+import useCollapse from 'react-collapsed';
 import './App.css';
-import constitution from "./data/constitution.json";
-import Constitution from "./components/Constitution";
-
-function Constitution() {
+function Collapsible() {
+    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
-        <div className="px-24">
-            <div className="mt-32 justify-center">
-                <h2 className="text-center text-4xl text-black font-bold">
-                    Constitution
-                </h2>
-                <h3 className="text-center text-2xl text-black">
-                    Brown Political Union
-                </h3>
+        <div className="collapsible">
+            <div className="header" {...getToggleProps()}>
+                {isExpanded ? 'Collapse' : 'Expand'}
             </div>
-            <div className="mt-20">
-                {constitution
-                    .map((cont, i) => {
-                        return (
-                            <Constitution
-                                key={i}
-                                head={cont.header}
-                                content={cont.info}
-                            />
-                        );
-                    })}
+            <div {...getCollapseProps()}>
+                <div className="content">
+                    Now you can see the hidden content. <br/><br/>
+                    Click again to hide...
+                </div>
             </div>
         </div>
     );
 }
-
-export default Constitution;
+function App() {
+    return (
+        <Collapsible/>
+    );
+}
+export default App;

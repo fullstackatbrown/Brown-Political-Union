@@ -204,5 +204,57 @@
         "data" : "In the event of a vacancy in office, the President shall appoint a member to fill the vacancy at their discretion."
       }
     ]
+  },
+  {
+    "header": "Article 10: Finances",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "All funds collected by Brown Political Union from any source shall be deposited with the Student Activities Office (SAO), and all expenses of the group shall be spent through processes of the SAO. Brown Political Union agrees to follow all regulations regarding all financial transactions as set forth by the SAO."
+      }
+    ]
+  },
+  {
+    "header": "Article 11: Amendment Procedure",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Any amendments to the Constitution shall be brought before the Executive Board of the Brown Political Union, which may be approved by a 2/3rds vote of the Executive Board. The President shall notify all current members of the group that an amendment to the group’s constitution has occurred."
+      },
+      {
+        "section" : "Section 2",
+        "data" : "Records shall be kept of all amendments and modifications to this constitution."
+      }
+    ]
+  },
+  {
+    "header": "Article 12: Amendment Procedure",
+    "info":
+    [
+      {
+        "section" : "Section 1",
+        "data" : "Members may be removed from the club, through feedback or the due process identified below, should any of the officers or members feel that a member is disruptive from the purpose of the club. This could include club-specific infractions like consistent non-attendance or neglect of responsibilities, but could also include infractions perpetrated to the larger community like disrespect and bias. All removals will follow a procedure of notifying the member in question at least a week prior to the next meeting. Members have the right to speak on their own behalf and officers should meet with the member to come to terms about how to proceed (removal, behavior change, staying etc). If officers and members do not come to terms, a club hearing can be held."
+      },
+      {
+        "section" : "Section 2",
+        "data" : "When a member appears before the Executive Board on grounds of removal, the President (or if the President is being questioned for removal, the next Officer in the line of succession) shall explain the charges and the reason to ask for removal. In order to preserve the impartiality of the Presiding Officer, the club member who brought up the concern or the next Officer in the line of succession shall serve as primary representative advocating the member-in-question’s removal. That member shall then have time to defend themselves and/or call upon other defense advocates for attestations to their good character and standing, after which the floor will be open for questions. A vote of the Executive Board on the removal of the member in question will follow by secret ballot, conducted by the presiding officer. Should this vote result in at least ⅔ of Executive Board members favoring removal, the member in question shall have their membership revoked. "
+      },
+      {
+        "section" : "Note",
+        "data" : "These procedures are specific to the expectations of club members and independent of these University procedures and processes to address matters of discrimination. Removal from a club based on behavior in this policy are not considered disciplinary actions nor are they recorded as such by the University"
+      }
+    ]
+  },
+  {
+    "header" : "Article 13: Anti-Discrimination Clause",
+    "info" :
+    [
+      {
+        "section" : "Section 1",
+        "data" : "The Brown Political Union is committed to fostering an inclusive, anti-discriminatory environment in which all individuals are treated with respect and dignity, regardless of any identities they may hold. The Brown Political Union prohibits harassment and retaliation by its membership and leadership alike. The Brown Political Union encourages its members to voice concerns and commits to engaging in effective and equitable conflict management."
+      }
+    ]
   }
 ]

@@ -1,13 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  collection,
-  query,
-  getDocs,
-  updateDoc,
-} from "firebase/firestore";
+import {initializeApp} from "firebase/app";
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {collection, doc, getDocs, getFirestore, query, updateDoc,} from "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -54,11 +47,35 @@ export class Firebase {
     await updateDoc(documentRef, newEvent);
   };
 
+  getAllGen = async (path) => {
+    const q = query(collection(this.firestore, path));
+    const querySnapshot = await getDocs(q);
+    let ret = [];
+    querySnapshot.forEach((doc) => {
+      ret.push(doc.data());
+    });
+    return ret;
+  };
+
+  getAllGenDocs = async (path) => {
+    const q = query(collection(this.firestore, path));
+    const querySnapshot = await getDocs(q);
+    let ret = [];
+    querySnapshot.forEach((doc) => {
+      ret.push(doc);
+    });
+    return ret;
+  };
+
+  modifyGeneral = async (path, id, newEvent) => {
+    const documentRef = doc(this.firestore, path, id);
+    await updateDoc(documentRef, newEvent);
+  };
+
   signIn = async (email, password) => {
     signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        return user;
+        return userCredential.user;
       })
       .catch((error) => {
         console.error(error.code, error.message);
