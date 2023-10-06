@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app";
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import {collection, doc, getDocs, getFirestore, query, updateDoc,} from "firebase/firestore";
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
+import {collection, doc, getDocs, getFirestore, query, updateDoc, deleteDoc} from "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -32,19 +32,14 @@ export class Firebase {
     return ret;
   };
 
-  getAllEventDocs = async () => {
-    const q = query(collection(this.firestore, "events"));
-    const querySnapshot = await getDocs(q);
-    let ret = [];
-    querySnapshot.forEach((doc) => {
-      ret.push(doc);
-    });
-    return ret;
-  };
-
   modifyEvent = async (id, newEvent) => {
     const documentRef = doc(this.firestore, "events", id);
     await updateDoc(documentRef, newEvent);
+  };
+
+  deleteGeneral = async (id, path) => {
+    const documentRef = doc(this.firestore, path, id);
+    await deleteDoc(documentRef);
   };
 
   getAllGen = async (path) => {
@@ -81,4 +76,15 @@ export class Firebase {
         console.error(error.code, error.message);
       });
   };
+
+  signUp = async (email, password) => {
+    createUserWithEmailAndPassword(this.auth, email, password)
+        .then((userCredential) => {
+          return userCredential.user;
+        })
+        .catch((error) => {
+          console.error(error.code, error.message);
+        });
+  };
+
 }

@@ -2,7 +2,7 @@ import './App.css';
 import constitution from "./data/constitution.json";
 import Constitution from "./components/Constitution";
 
-function Constitution_react() {
+function ConstitutionReact() {
     return (
         <div className="px-24">
             <div className="mt-32 justify-center">
@@ -29,4 +29,4 @@ function Constitution_react() {
     );
 }
 
-export default Constitution_react;
+export default ConstitutionReact;

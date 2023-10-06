@@ -2,21 +2,21 @@ import { SocialIcon } from 'react-social-icons';
 
 const Footnote = () => {
     return (
-        <section className="h-72 bg-[#650202]">
+        <section className="h-72 bg-gray-200">
             <div className="float-left inline-block pl-10 pt-12">
-                <div className="text-5xl text-white font-bold">
+                <div className="text-5xl text-[#650202] font-bold">
                     BPU
                 </div>
                 <div className="h-5">
 
                 </div>
-                <div className="text-l text-white">
+                <div className="text-l text-[#650202]">
                     The Brown Political Union is a nonpartisan student-run organization
                 </div>
-                <div className="text-l text-white">
+                <div className="text-l text-[#650202]">
                     dedicated to providing a forum for respectful political.
                 </div>
-                <div className="text-l text-white">
+                <div className="text-l text-[#650202]">
                     discourse on campus.
                 </div>
                 <div className="mt-6">
@@ -30,22 +30,22 @@ const Footnote = () => {
             </div>
 
             <div className="float-right grid grid-rows-2 grid-flow-col gap-6 pt-12 pr-20">
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     About Us
                 </div>
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     Events
                 </div>
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     Constitution
                 </div>
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     Parties
                 </div>
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     Leadership
                 </div>
-                <div className="text-2xl text-white font-bold inline-block">
+                <div className="text-2xl text-[#650202] font-bold inline-block">
                     Contact
                 </div>
             </div>

@@ -27,6 +27,11 @@ const ModifiablePartiesCard = ({
         firebase.modifyGeneral("parties", id, newEvent);
     };
 
+    const deleteEvent = async () => {
+        setCurrentImage(newEvent.image);
+        await firebase.deleteGeneral(id, "leadership")
+    };
+
     return (
         <div class="bg-gray-200 rounded-md flex justify-between">
             <div class="pt-2 pb-4 px-4">
@@ -63,6 +68,12 @@ const ModifiablePartiesCard = ({
                     onClick={modify}
                 >
                     Modify
+                </button>
+                <button
+                    className="font-bold border-2 p-1 mt-5 ml-4 rounded-md border-slate-400 bg-red-600 text-white hover:bg-red-800"
+                    onClick={deleteEvent}
+                >
+                    Delete
                 </button>
             </div>
             <img class="rounded-t-md w-1/2" src={currentImage} alt={"None"}/>

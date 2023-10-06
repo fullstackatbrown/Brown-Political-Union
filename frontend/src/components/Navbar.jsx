@@ -10,7 +10,7 @@ const buttons = [
 
 const NavbarButton = ({ name, link }) => {
   return (
-    <a class="text-lg text-white font-bold" href={link}>
+    <a class="text-lg text-[#650202] font-bold" href={link}>
       {name}
     </a>
   );
@@ -18,9 +18,9 @@ const NavbarButton = ({ name, link }) => {
 
 const Navbar = () => {
   return (
-    <section class="md:fixed flex w-full bg-[#650202] justify-between items-center flex-wrap top-0 px-5 md:px-20 py-3 z-50 drop-shadow-lg">
-      <a class="text-3xl md:text-5xl text-white font-bold" href="/">
-        BPU
+    <section class="md:fixed flex w-full bg-gray-200 justify-between items-center flex-wrap top-0 px-5 md:px-20 py-3 z-50 drop-shadow-lg">
+      <a class="w-10 text-3xl md:text-5xl text-white font-bold" href="/">
+          <img src={require("../data/BPU Logo Official Brown.png")} alt={"BPU"} />
       </a>
       <div class="flex flex-wrap gap-8 mt-5 md:mt-0">
         {buttons.map(({ name, link }, i) => (

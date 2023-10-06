@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import './App.css';
 import Bio from "./components/Bio";
 import {useEffect, useState} from "react";

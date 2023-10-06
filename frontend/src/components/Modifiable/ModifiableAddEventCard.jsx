@@ -1,25 +1,41 @@
 import {useState} from "react";
-import {Timestamp} from "firebase/firestore";
+import {addDoc, collection, getFirestore, Timestamp} from "firebase/firestore";
+import React from "react";
+import {initializeApp} from "firebase/app";
 
-const ModifiableEventCard = ({
-                                 firebase,
-                                 id,
-                                 image,
-                                 virtual,
-                                 title,
-                                 description,
-                                 where,
-                                 when,
-                             }) => {
-    const [currentImage, setCurrentImage] = useState(image);
+const config = {
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
+
+const ModifiableAddEventCard = () => {
+    const app = initializeApp(config);
+    const firestore = getFirestore(app);
+    const [currentImage, setCurrentImage] = useState();
     const [newEvent, setNewEvent] = useState({
-        description: description,
-        image: image,
-        title: title,
-        virtual: virtual,
-        when: when,
-        where: where,
+        description: "",
+        image: "",
+        title: "",
+        virtual: true,
+        when: "",
+        where: "",
     });
+    const submitEvent = async () => {
+        setCurrentImage(newEvent.image);
+        await addDoc(collection(firestore, "events"), {
+            description : newEvent.description,
+            image: newEvent.image,
+            title: newEvent.title,
+            virtual: newEvent.virtual,
+            when: newEvent.when,
+            where: newEvent.where,
+        });
+    };
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
@@ -36,20 +52,6 @@ const ModifiableEventCard = ({
         });
     };
 
-    const modify = async () => {
-        setCurrentImage(newEvent.image);
-        firebase.modifyEvent(id, newEvent);
-    };
-
-    const deleteEvent = async () => {
-        setCurrentImage(newEvent.image);
-        await firebase.deleteGeneral(id, "events")
-    };
-
-    let tempWhen = when;
-    tempWhen.setHours(when.getHours() - 5);
-    const date = tempWhen.toISOString().split("T")[0];
-
     return (
         <div class="bg-gray-200 rounded-md flex justify-between">
             <div class="pt-2 pb-4 px-4">
@@ -57,8 +59,7 @@ const ModifiableEventCard = ({
                 <input
                     name="title"
                     type="text"
-                    defaultValue={title}
-                    placeholder={title}
+                    defaultValue={""}
                     class="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -67,7 +68,7 @@ const ModifiableEventCard = ({
                     <select
                         name="virtual"
                         class="bg-white p-1"
-                        defaultValue={virtual ? "virtual" : "in-person"}
+                        defaultValue={"virtual"}
                         onChange={handleInputChange}
                     >
                         <option value="virtual">Virtual</option>
@@ -79,7 +80,7 @@ const ModifiableEventCard = ({
                     name="description"
                     rows="6"
                     cols="40"
-                    defaultValue={description}
+                    defaultValue={""}
                     class="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -89,7 +90,7 @@ const ModifiableEventCard = ({
                         name="where"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={where}
+                        defaultValue={""}
                         class="p-1"
                     />
                 </p>
@@ -99,7 +100,7 @@ const ModifiableEventCard = ({
                         name="when"
                         onChange={handleInputChange}
                         type="date"
-                        defaultValue={date}
+                        defaultValue={""}
                     />
                 </p>
                 <p class="my-2">
@@ -109,20 +110,14 @@ const ModifiableEventCard = ({
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={image}
+                        defaultValue={""}
                     />
                 </p>
                 <button
                     class="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
-                    onClick={modify}
+                    onClick={submitEvent}
                 >
-                    Modify
-                </button>
-                <button
-                    className="font-bold border-2 p-1 mt-5 ml-4 rounded-md border-slate-400 bg-red-600 text-white hover:bg-red-800"
-                    onClick={deleteEvent}
-                >
-                    Delete
+                    Submit
                 </button>
             </div>
             <img class="rounded-t-md w-1/2" src={currentImage} alt={"Not found"} />
@@ -130,4 +125,4 @@ const ModifiableEventCard = ({
     );
 };
 
-export default ModifiableEventCard;
+export default ModifiableAddEventCard;

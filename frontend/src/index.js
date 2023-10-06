@@ -5,8 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { FirebaseContext, Firebase } from "./firebase";
 
+// Cresting the root for making the document
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+  // React StrictMode encapsulates a portion of your full application as a component.
+  // FirebaseContext initializes the firebase implemented in the program
   <React.StrictMode>
     <FirebaseContext.Provider value={new Firebase()}>
       <App />

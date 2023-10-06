@@ -1,4 +1,3 @@
-import Navbar from "./components/Navbar";
 import './App.css';
 import Parties from "./components/Parties";
 import {useEffect, useState} from "react";

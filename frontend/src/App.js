@@ -9,8 +9,10 @@ import Parties from "./Parties";
 import Leadership from "./Leadership";
 import Event from "./components/Events";
 import Contact from "./contact"
-import Constitution_react from "./Constitution_react";
+import ConstitutionReact from "./ConstitutionReact";
 
+// Router : A constant determining the total connection between the home page and
+// the other pages
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,11 +23,12 @@ const router = createBrowserRouter([
   { path: "/admin", element: <Admin /> },
   { path: "/events", element: <Event /> },
   { path: "/leadership", element: <Leadership /> },
-  { path: "/constitution", element: <Constitution_react /> },
+  { path: "/constitution", element: <ConstitutionReact /> },
   { path: "/contact", element: <Contact /> },
   { path: "/parties", element: <Parties /> },
 ]);
 
+// App : The function that creates the
 function App() {
   return (
     <main class="h-screen">
