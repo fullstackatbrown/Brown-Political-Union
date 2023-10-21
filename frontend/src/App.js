@@ -1,14 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Footnote from "./components/Footnote";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import AboutUs from "./components/AboutUs";
-import Events from "./components/Events";
 import Admin from "./components/Admin";
-import Parties from "./Parties";
+import { default as Event, default as Events } from "./components/Events";
+import Footnote from "./components/Footnote";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 import Leadership from "./Leadership";
-import Event from "./components/Events";
-import Contact from "./contact"
+import Parties from "./Parties";
+// import Contact from "./contact"
 import ConstitutionReact from "./ConstitutionReact";
 
 // Router : A constant determining the total connection between the home page and
@@ -24,7 +23,7 @@ const router = createBrowserRouter([
   { path: "/events", element: <Event /> },
   { path: "/leadership", element: <Leadership /> },
   { path: "/constitution", element: <ConstitutionReact /> },
-  { path: "/contact", element: <Contact /> },
+  // { path: "/contact", element: <Contact /> },
   { path: "/parties", element: <Parties /> },
 ]);
 

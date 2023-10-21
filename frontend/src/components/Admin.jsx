@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import "../App.css";
 import { useFirebase } from "../firebase";
-import ModifiableEventCard from "./Modifiable/ModifiableEventCard";
-import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
-import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard";
 import ModifiableAddEventCard from "./Modifiable/ModifiableAddEventCard";
 import ModifiableAddLeadCard from "./Modifiable/ModifiableAddLeadCard";
 import ModifiableAddPartiesCard from "./Modifiable/ModifiableAddPartiesCard";
-import React from 'react';
-import "../App.css"
+import ModifiableEventCard from "./Modifiable/ModifiableEventCard";
+import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard";
+import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
 
-const Dashboard = ({ firebase, signOut }) => {
+const Dashboard = ({ signOut }) => {
   const [events, setEvents] = useState([]);
   const [parties, setParties] = useState([]);
   const [leader, setLeaders] = useState([]);
+  const firebase = useFirebase();
+  
   useEffect(() => {
     async function fetch() {
       setEvents((await firebase.getAllGenDocs("events")).sort());
@@ -33,7 +34,6 @@ const Dashboard = ({ firebase, signOut }) => {
                       return (
                           <div className="my-2" key={i}>
                               <ModifiableEventCard
-                                  firebase={firebase}
                                   id={event.id}
                                   image={data.image}
                                   virtual={data.virtual}
@@ -172,8 +172,6 @@ const Admin = () => {
       <div className="mt-40 mx-auto max-w-screen-lg px-8">
         {loggedIn ? (
           <Dashboard
-              firebase={firebase}
-              firestore={firebase.firestore}
               signOut={signOut}
           />
         ) : (

@@ -1,6 +1,6 @@
-import {initializeApp} from "firebase/app";
-import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from "firebase/auth";
-import {collection, doc, getDocs, getFirestore, query, updateDoc, deleteDoc} from "firebase/firestore";
+import { getApp, getApps, initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { collection, deleteDoc, doc, getDocs, getFirestore, query, updateDoc } from "firebase/firestore";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,13 +12,22 @@ const config = {
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
 };
+export function firebaseInit() {
+  let app;
 
+  if (getApps().length === 0) {
+      app = initializeApp(config);
+  } else {
+      app = getApp();
+  }
+  return app;
+}
 export class Firebase {
   firestore;
   auth;
 
   constructor() {
-    const app = initializeApp(config);
+    const app = firebaseInit();
     this.firestore = getFirestore(app);
     this.auth = getAuth(app);
   }
