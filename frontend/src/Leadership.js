@@ -1,17 +1,9 @@
 import './App.css';
 import Bio from "./components/Bio";
-import {useEffect, useState} from "react";
-import {useFirebase} from "./firebase";
+import { useCollection } from './firebase/hooks/useCollection';
 
 function Leadership() {
-    const [leader_firebase, setLeader] = useState([]);
-    const firebase = useFirebase();
-    useEffect(() => {
-        async function fetch() {
-            setLeader(await firebase.getAllGen("leadership"));
-        }
-        fetch();
-    }, [firebase]);
+    const leaders = useCollection("leadership");
     return (
         <div>
             <div className="h-32 mt-24 justify-center">
@@ -20,18 +12,7 @@ function Leadership() {
                 </div>
             </div>
             <div className="h-screen grid grid-cols-3 gap-x-2 gap-y-24 ml-28">
-                {leader_firebase
-                    .map((leader, i) => {
-                        return (
-                            <Bio
-                                key={i}
-                                name={leader.name}
-                                position={leader.position}
-                                blurbs={leader.blurbs}
-                                image={leader.image}
-                            />
-                        );
-                    })}
+                {leaders.map((leader, i) => (<Bio key={i} {...leader} />))}
             </div>
             <div className="h-32"> </div>
         </div>

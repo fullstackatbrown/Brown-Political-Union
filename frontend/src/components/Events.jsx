@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useFirebase } from "../firebase";
+import { useState } from "react";
+import { useCollection } from "../firebase/hooks/useCollection";
 
 const EventCard = ({ image, virtual, title, description, where, when }) => {
   return (
@@ -53,16 +53,8 @@ const UpcomingPastButton = ({ upcoming, setUpcoming }) => {
 
 const Events = () => {
   const [upcoming, setUpcoming] = useState(true);
-  const firebase = useFirebase();
-  const [events, setEvents] = useState([]);
   const currentDate = new Date();
-
-  useEffect(() => {
-    async function fetch() {
-      setEvents(await firebase.getAllEvents());
-    }
-    fetch();
-  }, [firebase]);
+  const events = useCollection("events");
 
   return (
     <div>
@@ -85,11 +77,7 @@ const Events = () => {
             return (
               <EventCard
                 key={i}
-                image={event.image}
-                virtual={event.virtual}
-                title={event.title}
-                description={event.description}
-                where={event.where}
+                {...event}
                 when={event.when.toDate().toDateString()}
               />
             );

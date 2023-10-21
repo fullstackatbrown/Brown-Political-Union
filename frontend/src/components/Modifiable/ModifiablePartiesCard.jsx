@@ -1,35 +1,23 @@
-import { useState } from "react";
+import { useModifiableCard } from "../../firebase/hooks/useModifiableCard";
 
-const ModifiablePartiesCard = ({
-                                 firebase,
-                                 id,
-                                 name,
-                                 image,
-                                 blurbs
-                             }) => {
-    const [currentImage, setCurrentImage] = useState(image);
-    const [newEvent, setNewEvent] = useState({
-        name: name,
-        image: image,
-        blurbs: blurbs,
-    });
+const ModifiablePartiesCard = (props) => {
+    const { id, ...baseParty } = props;
+
+    const {
+        currentImage,
+        currentData,
+        setCurrentData,
+        modifyCard,
+        deleteCard,
+    } = useModifiableCard("parties", id, baseParty);
+    const { name, image, blurbs } = currentData;
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        setNewEvent({
-            ...newEvent,
+        setCurrentData({
+            ...currentData,
             [event.target.name]: value,
         });
-    };
-
-    const modify = async () => {
-        setCurrentImage(newEvent.image);
-        firebase.modifyGeneral("parties", id, newEvent);
-    };
-
-    const deleteEvent = async () => {
-        setCurrentImage(newEvent.image);
-        await firebase.deleteGeneral(id, "leadership")
     };
 
     return (
@@ -65,13 +53,13 @@ const ModifiablePartiesCard = ({
                 </p>
                 <button
                     className="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
-                    onClick={modify}
+                    onClick={modifyCard}
                 >
                     Modify
                 </button>
                 <button
                     className="font-bold border-2 p-1 mt-5 ml-4 rounded-md border-slate-400 bg-red-600 text-white hover:bg-red-800"
-                    onClick={deleteEvent}
+                    onClick={deleteCard}
                 >
                     Delete
                 </button>

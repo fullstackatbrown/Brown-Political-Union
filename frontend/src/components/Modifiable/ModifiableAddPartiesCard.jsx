@@ -2,7 +2,6 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 
 const ModifiableAddPartiesCard = () => {
-    const firestore = getFirestore();
     const [currentImage, setCurrentImage] = useState();
     const [newEvent, setNewEvent] = useState({
         name: "",
@@ -10,12 +9,9 @@ const ModifiableAddPartiesCard = () => {
         blurbs: "",
     });
     const submitParties = async () => {
+        const firestore = getFirestore();
         setCurrentImage(newEvent.image);
-        await addDoc(collection(firestore, "parties"), {
-            name: newEvent.name,
-            image: newEvent.image,
-            blurbs: newEvent.blurbs,
-        });
+        await addDoc(collection(firestore, "parties"), newEvent);
     };
     const handleInputChange = (event) => {
         event.preventDefault();

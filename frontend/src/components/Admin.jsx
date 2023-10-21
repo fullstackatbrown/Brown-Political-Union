@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "../App.css";
 import { useFirebase } from "../firebase";
+import { useCollection } from '../firebase/hooks/useCollection';
 import ModifiableAddEventCard from "./Modifiable/ModifiableAddEventCard";
 import ModifiableAddLeadCard from "./Modifiable/ModifiableAddLeadCard";
 import ModifiableAddPartiesCard from "./Modifiable/ModifiableAddPartiesCard";
@@ -9,19 +10,9 @@ import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard";
 import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
 
 const Dashboard = ({ signOut }) => {
-  const [events, setEvents] = useState([]);
-  const [parties, setParties] = useState([]);
-  const [leader, setLeaders] = useState([]);
-  const firebase = useFirebase();
-  
-  useEffect(() => {
-    async function fetch() {
-      setEvents((await firebase.getAllGenDocs("events")).sort());
-      setParties((await firebase.getAllGenDocs("parties")).sort());
-      setLeaders((await firebase.getAllGenDocs("leadership")).sort());
-    }
-    fetch();
-  }, [firebase]);
+  const events = useCollection("events");
+  const parties = useCollection("parties");
+  const leaders = useCollection("leadership");
 
   return (
       <div>
@@ -29,19 +20,10 @@ const Dashboard = ({ signOut }) => {
               <h3 className="font-bold text-3xl text-center">Admin Dashboard</h3>
               <h3 className="font-bold text-3xl">Events : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {events.map((event, i) => {
-                      const data = event.data();
+                  {events.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiableEventCard
-                                  id={event.id}
-                                  image={data.image}
-                                  virtual={data.virtual}
-                                  title={data.title}
-                                  description={data.description}
-                                  where={data.where}
-                                  when={data.when.toDate()}
-                              />
+                        <div className="my-2" key={data.id}>
+                              <ModifiableEventCard {...data} when={data.when.toDate()} />
                           </div>
                       );
                   })}
@@ -51,17 +33,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <h3 className="font-bold text-3xl">Parties : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {parties.map((part, i) => {
-                      const data = part.data();
+                  {parties.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiablePartiesCard
-                                  firebase={firebase}
-                                  id={part.id}
-                                  name={data.name}
-                                  image={data.image}
-                                  blurbs={data.blurbs}
-                              />
+                          <div className="my-2" key={data.id}>
+                              <ModifiablePartiesCard {...data} />
                           </div>
                       );
                   })}
@@ -71,18 +46,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <h3 className="font-bold text-3xl my-5">Leadership : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {leader.map((part, i) => {
-                      const data = part.data();
+                  {leaders.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiableLeadCard
-                                  firebase={firebase}
-                                  id={part.id}
-                                  name={data.name}
-                                  image={data.image}
-                                  position={data.position}
-                                  blurbs={data.blurbs}
-                              />
+                          <div className="my-2" key={data.id}>
+                              <ModifiableLeadCard {...data} />
                           </div>
                       );
                   })}

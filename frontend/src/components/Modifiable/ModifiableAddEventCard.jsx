@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 
 const ModifiableAddEventCard = () => {
-    const firestore = getFirestore();
     const [currentImage, setCurrentImage] = useState();
     const [newEvent, setNewEvent] = useState({
         description: "",
@@ -15,14 +14,8 @@ const ModifiableAddEventCard = () => {
     });
     const submitEvent = async () => {
         setCurrentImage(newEvent.image);
-        await addDoc(collection(firestore, "events"), {
-            description : newEvent.description,
-            image: newEvent.image,
-            title: newEvent.title,
-            virtual: newEvent.virtual,
-            when: newEvent.when,
-            where: newEvent.where,
-        });
+        const firestore = getFirestore();
+        await addDoc(collection(firestore, "events"), newEvent);
     };
     const handleInputChange = (event) => {
         event.preventDefault();

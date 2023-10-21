@@ -1,26 +1,15 @@
 import { Timestamp } from "firebase/firestore";
-import { useState } from "react";
-import { useFirebase } from "../../firebase";
+import { useModifiableCard } from "../../firebase/hooks/useModifiableCard";
 
-const ModifiableEventCard = ({
-                                 id,
-                                 image,
-                                 virtual,
-                                 title,
-                                 description,
-                                 where,
-                                 when,
-                             }) => {
-    const [currentImage, setCurrentImage] = useState(image);
-    const [newEvent, setNewEvent] = useState({
-        description: description,
-        image: image,
-        title: title,
-        virtual: virtual,
-        when: when,
-        where: where,
-    });
-    const firebase = useFirebase()
+const ModifiableEventCard = (props) => {
+    const { id, ...baseEvent } = props
+    const {
+        currentImage,
+        currentData,
+        setCurrentData,
+        modifyCard,
+        deleteCard,
+    } = useModifiableCard("events", id, baseEvent);
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
@@ -31,26 +20,15 @@ const ModifiableEventCard = ({
             tempWhen.setHours(tempWhen.getHours() + 5);
             value = Timestamp.fromDate(new Date(tempWhen));
         }
-        setNewEvent({
-            ...newEvent,
+        setCurrentData({
+            ...currentData,
             [event.target.name]: value,
         });
     };
-
-    const modify = async () => {
-        setCurrentImage(newEvent.image);
-        firebase.modifyEvent(id, newEvent);
-    };
-
-    const deleteEvent = async () => {
-        setCurrentImage(newEvent.image);
-        await firebase.deleteGeneral(id, "events")
-    };
-
+    const { title, image, description, virtual, when, where } = currentData;
     let tempWhen = when;
     tempWhen.setHours(when.getHours() - 5);
     const date = tempWhen.toISOString().split("T")[0];
-
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
@@ -63,7 +41,7 @@ const ModifiableEventCard = ({
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
                 />
-                <div className="my-2">
+                <div className="my-2">``
                     <span className="font-bold">Mode: </span>
                     <select
                         name="virtual"
@@ -115,13 +93,13 @@ const ModifiableEventCard = ({
                 </p>
                 <button
                     className="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
-                    onClick={modify}
+                    onClick={modifyCard}
                 >
                     Modify
                 </button>
                 <button
                     className="font-bold border-2 p-1 mt-5 ml-4 rounded-md border-slate-400 bg-red-600 text-white hover:bg-red-800"
-                    onClick={deleteEvent}
+                    onClick={deleteCard}
                 >
                     Delete
                 </button>

@@ -2,9 +2,8 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 
 const ModifiableAddLeadCard = () => {
-    const firestore = getFirestore();
     const [currentImage, setCurrentImage] = useState();
-    const [newEvent, setNewEvent] = useState({
+    const [newLead, setnewLead] = useState({
         image: "",
         name: "",
         position: "",
@@ -14,20 +13,16 @@ const ModifiableAddLeadCard = () => {
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        setNewEvent({
-            ...newEvent,
+        setnewLead({
+            ...newLead,
             [event.target.name]: value,
         });
     };
 
     const submitLead = async () => {
-        setCurrentImage(newEvent.image);
-        await addDoc(collection(firestore, "leadership"), {
-            image: newEvent.image,
-            name: newEvent.name,
-            position: newEvent.position,
-            blurbs: newEvent.blurbs,
-        });
+        const firestore = getFirestore();
+        setCurrentImage(newLead.image);
+        await addDoc(collection(firestore, "leadership"), newLead);
     };
 
     return (
