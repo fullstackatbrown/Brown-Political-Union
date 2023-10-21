@@ -1,8 +1,8 @@
-import {useState} from "react";
-import {Timestamp} from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
+import { useState } from "react";
+import { useFirebase } from "../../firebase";
 
 const ModifiableEventCard = ({
-                                 firebase,
                                  id,
                                  image,
                                  virtual,
@@ -20,6 +20,7 @@ const ModifiableEventCard = ({
         when: when,
         where: where,
     });
+    const firebase = useFirebase()
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
