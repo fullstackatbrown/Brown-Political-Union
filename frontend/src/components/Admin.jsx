@@ -114,25 +114,25 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
 
   return (
     <section>
-      <h3 class="font-bold text-3xl">Admin Login</h3>
-      <div class="flex flex-col mb-4">
+      <h3 className="font-bold text-3xl">Admin Login</h3>
+      <div className="flex flex-col mb-4">
         <input
         type="text"
         name="email"
-        class="border-2 my-4 p-2 border-slate-400"
+        className="border-2 my-4 p-2 border-slate-400"
         placeholder="Email address"
         onChange={handleInputChange}
         />
         <input
         type="password"
         name="password"
-        class="border-2 p-2 border-slate-400"
+        className="border-2 p-2 border-slate-400"
         placeholder="Password"
         onChange={handleInputChange}
         />
       </div>
       <button
-        class="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202]"
+        className="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202]"
         onClick={signIn}
       >
         Sign in
@@ -169,7 +169,7 @@ const Admin = () => {
 
   return (
     <div>
-      <div class="mt-40 mx-auto max-w-screen-lg px-8">
+      <div className="mt-40 mx-auto max-w-screen-lg px-8">
         {loggedIn ? (
           <Dashboard
               firebase={firebase}

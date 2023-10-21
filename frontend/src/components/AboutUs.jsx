@@ -1,17 +1,17 @@
 const AboutSection = ({ subtitle, title, description, image, reverse }) => {
   return (
     <section
-      class={`flex flex-col-reverse ${
+      className={`flex flex-col-reverse ${
         reverse ? "md:flex-row-reverse" : "md:flex-row"
       } justify-center align-center w-auto gap-20 mb-32`}
     >
-      <div class="flex flex-col justify-center">
-        <p class="text-slate-600">{subtitle}</p>
-        <h3 class="font-bold text-3xl mb-4">{title}</h3>
+      <div className="flex flex-col justify-center">
+        <p className="text-slate-600">{subtitle}</p>
+        <h3 className="font-bold text-3xl mb-4">{title}</h3>
         <p>{description}</p>
       </div>
       <img
-        class="object-cover rounded-md h-auto w-52 drop-shadow-lg"
+        className="object-cover rounded-md h-auto w-52 drop-shadow-lg"
         src={image}
       />
     </section>
@@ -21,15 +21,15 @@ const AboutSection = ({ subtitle, title, description, image, reverse }) => {
 const AboutValue = ({ title, description }) => {
   return (
     <div display="flex flex-col justify-center align-center">
-      <h3 class="text-center text-2xl mb-2">{title}</h3>
-      <p class="text-center">{description}</p>
+      <h3 className="text-center text-2xl mb-2">{title}</h3>
+      <p className="text-center">{description}</p>
     </div>
   );
 };
 
 const AboutUs = () => {
   return (
-    <div class="mt-40 pb-16 mx-auto max-w-screen-md px-8">
+    <div className="mt-40 pb-16 mx-auto max-w-screen-md px-8">
       <AboutSection
         subtitle={"About BPU"}
         title={"We are a non-partisan student run organization."}
@@ -48,14 +48,14 @@ const AboutUs = () => {
         image={"https://source.unsplash.com/M6JDEotjfAw"}
         reverse={true}
       />
-      <div class="text-center">
-        <p class="text-slate-600">Our Values</p>
-        <p class="text-3xl mb-2">We follow these principles.</p>
-        <p class="text-lg">
+      <div className="text-center">
+        <p className="text-slate-600">Our Values</p>
+        <p className="text-3xl mb-2">We follow these principles.</p>
+        <p className="text-lg">
           The BPU sticks to its values through ever-changing times.
         </p>
       </div>
-      <div class="grid grid-rows-1 grid-flow-col gap-6 pt-16">
+      <div className="grid grid-rows-1 grid-flow-col gap-6 pt-16">
         <AboutValue
           title="Value"
           description="This is a description of a value. This is a description of a value. This is a description of a value."

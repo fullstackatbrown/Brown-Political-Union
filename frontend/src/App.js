@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 // App : The function that creates the
 function App() {
   return (
-    <main class="h-screen">
+    <main className="h-screen">
       <Navbar />
       <RouterProvider router={router} />
       <Footnote />

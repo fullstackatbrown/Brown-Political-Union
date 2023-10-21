@@ -3,16 +3,16 @@ import { useFirebase } from "../firebase";
 
 const EventCard = ({ image, virtual, title, description, where, when }) => {
   return (
-    <div class="bg-gray-200 rounded-md">
-      <img class="object-cover rounded-t-md" src={image} />
-      <div class="pt-2 pb-4 px-4">
-        <h3 class="font-bold text-2xl mb-0">{title}</h3>
-        <p class="text-slate-600 mb-2">{virtual ? "Virtual" : "In-Person"}</p>
-        <p class="mb-3">{description}</p>
+    <div className="bg-gray-200 rounded-md">
+      <img className="object-cover rounded-t-md" src={image} />
+      <div className="pt-2 pb-4 px-4">
+        <h3 className="font-bold text-2xl mb-0">{title}</h3>
+        <p className="text-slate-600 mb-2">{virtual ? "Virtual" : "In-Person"}</p>
+        <p className="mb-3">{description}</p>
         <p>
-          <span class="font-bold">Where: </span>
+          <span className="font-bold">Where: </span>
           {virtual ? (
-            <a class="text-cyan-600 hover:text-blue-800" href={where}>
+            <a className="text-cyan-600 hover:text-blue-800" href={where}>
               Link
             </a>
           ) : (
@@ -20,7 +20,7 @@ const EventCard = ({ image, virtual, title, description, where, when }) => {
           )}
         </p>
         <p>
-          <span class="font-bold">When: </span>
+          <span className="font-bold">When: </span>
           {when}
         </p>
       </div>
@@ -30,9 +30,9 @@ const EventCard = ({ image, virtual, title, description, where, when }) => {
 
 const UpcomingPastButton = ({ upcoming, setUpcoming }) => {
   return (
-    <div class="h-full">
+    <div className="h-full">
       <button
-        class={`h-full p-2 mr-1 text-white font-bold ${
+        className={`h-full p-2 mr-1 text-white font-bold ${
           upcoming ? "bg-[#650202]" : "bg-gray-600"
         }`}
         onClick={() => setUpcoming(true)}
@@ -40,7 +40,7 @@ const UpcomingPastButton = ({ upcoming, setUpcoming }) => {
         Upcoming
       </button>
       <button
-        class={`h-full p-2 text-white font-bold ${
+        className={`h-full p-2 text-white font-bold ${
           !upcoming ? "bg-[#650202]" : "bg-gray-600"
         }`}
         onClick={() => setUpcoming(false)}
@@ -66,15 +66,15 @@ const Events = () => {
 
   return (
     <div>
-      <div class="mt-40 mx-auto max-w-screen-md px-8">
-        <section class="flex text-center align-items-center mb-12">
-          <h3 class="font-bold text-3xl">Upcoming Events & Speakers</h3>
-          <div class="ml-auto justify-align-items-center">
+      <div className="mt-40 mx-auto max-w-screen-md px-8">
+        <section className="flex text-center align-items-center mb-12">
+          <h3 className="font-bold text-3xl">Upcoming Events & Speakers</h3>
+          <div className="ml-auto justify-align-items-center">
             <UpcomingPastButton upcoming={upcoming} setUpcoming={setUpcoming} />
           </div>
         </section>
       </div>
-      <div class="grid pb-16 mx-auto max-w-screen-lg px-8 grid-cols-3 gap-8">
+      <div className="grid pb-16 mx-auto max-w-screen-lg px-8 grid-cols-3 gap-8">
         {events
           .filter((event) =>
             upcoming

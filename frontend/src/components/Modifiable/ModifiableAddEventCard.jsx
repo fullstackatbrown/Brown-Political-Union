@@ -53,21 +53,21 @@ const ModifiableAddEventCard = () => {
     };
 
     return (
-        <div class="bg-gray-200 rounded-md flex justify-between">
-            <div class="pt-2 pb-4 px-4">
-                <span class="font-bold">Title: </span>
+        <div className="bg-gray-200 rounded-md flex justify-between">
+            <div className="pt-2 pb-4 px-4">
+                <span className="font-bold">Title: </span>
                 <input
                     name="title"
                     type="text"
                     defaultValue={""}
-                    class="font-bold text-2xl mb-1 p-1"
+                    className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
                 />
-                <div class="my-2">
-                    <span class="font-bold">Mode: </span>
+                <div className="my-2">
+                    <span className="font-bold">Mode: </span>
                     <select
                         name="virtual"
-                        class="bg-white p-1"
+                        className="bg-white p-1"
                         defaultValue={"virtual"}
                         onChange={handleInputChange}
                     >
@@ -75,27 +75,27 @@ const ModifiableAddEventCard = () => {
                         <option value="in-person">In-Person</option>
                     </select>
                 </div>
-                <span class="font-bold">Description: </span>
+                <span className="font-bold">Description: </span>
                 <textarea
                     name="description"
                     rows="6"
                     cols="40"
                     defaultValue={""}
-                    class="mb-1 p-1"
+                    className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
-                <p class="my-2">
-                    <span class="font-bold">Where: </span>
+                <p className="my-2">
+                    <span className="font-bold">Where: </span>
                     <input
                         name="where"
                         onChange={handleInputChange}
                         type="text"
                         defaultValue={""}
-                        class="p-1"
+                        className="p-1"
                     />
                 </p>
-                <p class="my-2">
-                    <span class="font-bold">When: </span>
+                <p className="my-2">
+                    <span className="font-bold">When: </span>
                     <input
                         name="when"
                         onChange={handleInputChange}
@@ -103,10 +103,10 @@ const ModifiableAddEventCard = () => {
                         defaultValue={""}
                     />
                 </p>
-                <p class="my-2">
-                    <span class="font-bold">Image: </span>
+                <p className="my-2">
+                    <span className="font-bold">Image: </span>
                     <input
-                        class="w-100"
+                        className="w-100"
                         name="image"
                         onChange={handleInputChange}
                         type="text"
@@ -114,13 +114,13 @@ const ModifiableAddEventCard = () => {
                     />
                 </p>
                 <button
-                    class="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
+                    className="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
                     onClick={submitEvent}
                 >
                     Submit
                 </button>
             </div>
-            <img class="rounded-t-md w-1/2" src={currentImage} alt={"Not found"} />
+            <img className="rounded-t-md w-1/2" src={currentImage} alt={"Not found"} />
         </div>
     );
 };

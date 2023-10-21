@@ -1,18 +1,18 @@
 const Event = ({ image, virtual, title, description, where, when }) => {
   return (
-    <div class="flex flex-col md:flex-row mb-12 drop-shadow-lg">
-      <div class="flex mr-16 justify-center align-center w-full md:w-auto">
-        <img class="object-cover md:h-96 w-full md:w-96 rounded-md" src={image} />
+    <div className="flex flex-col md:flex-row mb-12 drop-shadow-lg">
+      <div className="flex mr-16 justify-center align-center w-full md:w-auto">
+        <img className="object-cover md:h-96 w-full md:w-96 rounded-md" src={image} />
       </div>
-      <div class="flex flex-col my-4 md:my-10 w-full justify-center">
-        <p class="text-slate-600">{virtual ? "Virtual" : "In-Person"}</p>
-        <h3 class="font-bold text-3xl mb-4">{title}</h3>
+      <div className="flex flex-col my-4 md:my-10 w-full justify-center">
+        <p className="text-slate-600">{virtual ? "Virtual" : "In-Person"}</p>
+        <h3 className="font-bold text-3xl mb-4">{title}</h3>
         <p>{description}</p>
-        <div class="mt-8">
+        <div className="mt-8">
           <p>
-            <span class="font-bold">Where: </span>
+            <span className="font-bold">Where: </span>
             {virtual ? (
-              <a class="text-cyan-600 hover:text-blue-800" href={where}>
+              <a className="text-cyan-600 hover:text-blue-800" href={where}>
                 Link
               </a>
             ) : (
@@ -20,7 +20,7 @@ const Event = ({ image, virtual, title, description, where, when }) => {
             )}
           </p>
           <p>
-            <span class="font-bold">When: </span>
+            <span className="font-bold">When: </span>
             {when}
           </p>
         </div>

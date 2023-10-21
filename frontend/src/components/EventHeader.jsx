@@ -1,7 +1,7 @@
 const EventHeader = ({ text }) => {
   return (
-    <div class="text-center mt-32 mb-12">
-      <h2 class="text-4xl font-bold">{text}</h2>
+    <div className="text-center mt-32 mb-12">
+      <h2 className="text-4xl font-bold">{text}</h2>
     </div>
   );
 };

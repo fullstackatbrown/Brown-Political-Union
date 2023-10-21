@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div class="mt-32 pb-16 mx-auto max-w-screen-md px-8">
+      <div className="mt-32 pb-16 mx-auto max-w-screen-md px-8">
         <EventHeader text="Upcoming Events" />
         {events
           .filter((event) => event.when.toDate() >= currentDate)
