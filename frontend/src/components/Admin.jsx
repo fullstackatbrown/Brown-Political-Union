@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
 import "../App.css";
-import { useFirebase } from "../firebase";
+import { useAuth } from '../firebase/auth';
 import { useCollection } from '../firebase/hooks/useCollection';
 import ModifiableAddEventCard from "./Modifiable/ModifiableAddEventCard";
 import ModifiableAddLeadCard from "./Modifiable/ModifiableAddLeadCard";
@@ -9,7 +10,7 @@ import ModifiableEventCard from "./Modifiable/ModifiableEventCard";
 import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard";
 import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
 
-const Dashboard = ({ signOut }) => {
+const Dashboard = () => {
   const events = useCollection("events");
   const parties = useCollection("parties");
   const leaders = useCollection("leadership");
@@ -59,7 +60,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <button
                   className="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202] mb-5"
-                  onClick={signOut}
+                  onClick={async () => {
+                    const auth = getAuth()
+                    await auth.signOut()
+                  }}
               >
                   Sign out
               </button>
@@ -68,7 +72,19 @@ const Dashboard = ({ signOut }) => {
   );
 };
 
-const LogInSection = ({ signIn, setEmail, setPassword }) => {
+const LogInSection = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const auth = getAuth();
+  const signIn = async () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .catch((error) => {
+        console.error(error.code, error.message);
+      });
+  }
+
+
   const handleInputChange = (event) => {
     event.preventDefault();
     const name = event.target.name;
@@ -112,41 +128,15 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
 };
 
 const Admin = () => {
-  const firebase = useFirebase();
-
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const signIn = async () => {
-    await firebase.signIn(email, password);
-  };
-
-  const signOut = async () => {
-    await firebase.auth.signOut();
-    setLoggedIn(false);
-  };
-
-  useEffect(() => {
-    firebase.auth.onAuthStateChanged(async (user) => {
-      if (!user) return;
-      setLoggedIn(true);
-    });
-  }, [firebase]);
+  const {isLoggedIn} = useAuth()
 
   return (
     <div>
       <div className="mt-40 mx-auto max-w-screen-lg px-8">
-        {loggedIn ? (
-          <Dashboard
-              signOut={signOut}
-          />
+        {isLoggedIn ? (
+          <Dashboard />
         ) : (
-          <LogInSection
-            signIn={signIn}
-            setEmail={setEmail}
-            setPassword={setPassword}
-          />
+          <LogInSection />
         )}
       </div>
     </div>
