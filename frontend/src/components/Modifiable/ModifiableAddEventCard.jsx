@@ -1,5 +1,6 @@
-import { addDoc, collection, getFirestore, Timestamp } from "firebase/firestore";
+import { Timestamp, addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
 
 
 const ModifiableAddEventCard = () => {
@@ -9,9 +10,10 @@ const ModifiableAddEventCard = () => {
         image: "",
         title: "",
         virtual: true,
-        when: "",
+        when: Timestamp.now(),
         where: "",
     });
+    const { title, image, description, virtual, when, where } = newEvent;
     const submitEvent = async () => {
         setCurrentImage(newEvent.image);
         const firestore = getFirestore();
@@ -20,19 +22,11 @@ const ModifiableAddEventCard = () => {
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        if (event.target.name === "virtual") {
-            value = value === "virtual";
-        } else if (event.target.name === "when") {
-            let tempWhen = new Date(value);
-            tempWhen.setHours(tempWhen.getHours() + 5);
-            value = Timestamp.fromDate(new Date(tempWhen));
-        }
         setNewEvent({
             ...newEvent,
             [event.target.name]: value,
         });
     };
-
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
@@ -40,8 +34,8 @@ const ModifiableAddEventCard = () => {
                 <input
                     name="title"
                     type="text"
-                    defaultValue={""}
                     className="font-bold text-2xl mb-1 p-1"
+                    value={title}
                     onChange={handleInputChange}
                 />
                 <div className="my-2">
@@ -49,8 +43,11 @@ const ModifiableAddEventCard = () => {
                     <select
                         name="virtual"
                         className="bg-white p-1"
-                        defaultValue={"virtual"}
-                        onChange={handleInputChange}
+                        value={virtual ? "virtual" : "in-person"}
+                        onChange={(v) => setNewEvent({
+                            ...newEvent,
+                            virtual: v === "virtual",
+                        })}
                     >
                         <option value="virtual">Virtual</option>
                         <option value="in-person">In-Person</option>
@@ -61,7 +58,7 @@ const ModifiableAddEventCard = () => {
                     name="description"
                     rows="6"
                     cols="40"
-                    defaultValue={""}
+                    value={description}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -71,17 +68,20 @@ const ModifiableAddEventCard = () => {
                         name="where"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={""}
+                        value={where}
                         className="p-1"
                     />
                 </p>
                 <p className="my-2">
                     <span className="font-bold">When: </span>
-                    <input
-                        name="when"
-                        onChange={handleInputChange}
-                        type="date"
-                        defaultValue={""}
+                    <DatePicker
+                        showIcon
+                        selected={when.toDate()}
+                        onChange={(date) => setNewEvent({
+                            ...newEvent,
+                            when: Timestamp.fromDate(date),
+                        })}
+                        showTimeInput
                     />
                 </p>
                 <p className="my-2">
@@ -91,7 +91,7 @@ const ModifiableAddEventCard = () => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={""}
+                        value={image}
                     />
                 </p>
                 <button

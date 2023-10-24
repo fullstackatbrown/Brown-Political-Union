@@ -24,7 +24,7 @@ const Dashboard = () => {
                   {events.map((data) => {
                       return (
                         <div className="my-2" key={data.id}>
-                              <ModifiableEventCard {...data} when={data.when.toDate()} />
+                              <ModifiableEventCard {...data} />
                           </div>
                       );
                   })}

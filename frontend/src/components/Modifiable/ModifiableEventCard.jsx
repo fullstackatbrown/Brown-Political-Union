@@ -1,5 +1,7 @@
 import { Timestamp } from "firebase/firestore";
+import DatePicker from "react-datepicker";
 import { useModifiableCard } from "../../firebase/hooks/useModifiableCard";
+
 
 const ModifiableEventCard = (props) => {
     const { id, ...baseEvent } = props
@@ -13,22 +15,12 @@ const ModifiableEventCard = (props) => {
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        if (event.target.name === "virtual") {
-            value = value === "virtual";
-        } else if (event.target.name === "when") {
-            let tempWhen = new Date(value);
-            tempWhen.setHours(tempWhen.getHours() + 5);
-            value = Timestamp.fromDate(new Date(tempWhen));
-        }
         setCurrentData({
             ...currentData,
             [event.target.name]: value,
         });
     };
     const { title, image, description, virtual, when, where } = currentData;
-    let tempWhen = when;
-    tempWhen.setHours(when.getHours() - 5);
-    const date = tempWhen.toISOString().split("T")[0];
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
@@ -47,7 +39,10 @@ const ModifiableEventCard = (props) => {
                         name="virtual"
                         className="bg-white p-1"
                         defaultValue={virtual ? "virtual" : "in-person"}
-                        onChange={handleInputChange}
+                        onChange={(v) => setCurrentData({
+                            ...currentData,
+                            virtual: v === "virtual",
+                        })}
                     >
                         <option value="virtual">Virtual</option>
                         <option value="in-person">In-Person</option>
@@ -74,11 +69,14 @@ const ModifiableEventCard = (props) => {
                 </p>
                 <p className="my-2">
                     <span className="font-bold">When: </span>
-                    <input
-                        name="when"
-                        onChange={handleInputChange}
-                        type="date"
-                        defaultValue={date}
+                    <DatePicker
+                        showIcon
+                        selected={when.toDate()}
+                        onChange={(date) => setCurrentData({
+                            ...currentData,
+                            when: Timestamp.fromDate(date),
+                        })}
+                        showTimeInput
                     />
                 </p>
                 <p className="my-2">
