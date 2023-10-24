@@ -1,6 +1,8 @@
 import { Timestamp, addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 
 const ModifiableAddEventCard = () => {
@@ -82,6 +84,7 @@ const ModifiableAddEventCard = () => {
                             when: Timestamp.fromDate(date),
                         })}
                         showTimeInput
+                        dateFormat="Pp"
                     />
                 </p>
                 <p className="my-2">

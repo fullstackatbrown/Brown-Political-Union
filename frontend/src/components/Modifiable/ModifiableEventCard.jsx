@@ -1,5 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useModifiableCard } from "../../firebase/hooks/useModifiableCard";
 
 
@@ -77,6 +78,7 @@ const ModifiableEventCard = (props) => {
                             when: Timestamp.fromDate(date),
                         })}
                         showTimeInput
+                        dateFormat="Pp"
                     />
                 </p>
                 <p className="my-2">

@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 const Event = ({ image, virtual, title, description, where, when }) => {
   return (
     <div className="flex flex-col md:flex-row mb-12 drop-shadow-lg">
@@ -21,7 +23,7 @@ const Event = ({ image, virtual, title, description, where, when }) => {
           </p>
           <p>
             <span className="font-bold">When: </span>
-            {when}
+            {format(when.toDate(), 'h:mm a, E MMM d, yyyy')}
           </p>
         </div>
       </div>

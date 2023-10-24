@@ -12,7 +12,6 @@ const Home = () => {
       <Event
         key={i}
         {...event}
-        when={event.when.toDate().toDateString()}
       />
     )
   )
