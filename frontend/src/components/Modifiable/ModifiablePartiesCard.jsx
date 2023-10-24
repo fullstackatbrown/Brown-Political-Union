@@ -27,7 +27,7 @@ const ModifiablePartiesCard = (props) => {
                 <input
                     name="name"
                     type="text"
-                    defaultValue={name}
+                    value={name}
                     placeholder={name}
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
@@ -37,7 +37,7 @@ const ModifiablePartiesCard = (props) => {
                     name="blurbs"
                     rows="6"
                     cols="40"
-                    defaultValue={blurbs}
+                    value={blurbs}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -48,7 +48,7 @@ const ModifiablePartiesCard = (props) => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={image}
+                        value={image}
                     />
                 </p>
                 <button

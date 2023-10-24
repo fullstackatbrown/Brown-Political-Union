@@ -29,7 +29,7 @@ const ModifiableEventCard = (props) => {
                 <input
                     name="title"
                     type="text"
-                    defaultValue={title}
+                    value={title}
                     placeholder={title}
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
@@ -39,7 +39,7 @@ const ModifiableEventCard = (props) => {
                     <select
                         name="virtual"
                         className="bg-white p-1"
-                        defaultValue={virtual ? "virtual" : "in-person"}
+                        value={virtual ? "virtual" : "in-person"}
                         onChange={(v) => setCurrentData({
                             ...currentData,
                             virtual: v === "virtual",
@@ -54,7 +54,7 @@ const ModifiableEventCard = (props) => {
                     name="description"
                     rows="6"
                     cols="40"
-                    defaultValue={description}
+                    value={description}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -64,7 +64,7 @@ const ModifiableEventCard = (props) => {
                         name="where"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={where}
+                        value={where}
                         className="p-1"
                     />
                 </p>
@@ -88,7 +88,7 @@ const ModifiableEventCard = (props) => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={image}
+                        value={image}
                     />
                 </p>
                 <button

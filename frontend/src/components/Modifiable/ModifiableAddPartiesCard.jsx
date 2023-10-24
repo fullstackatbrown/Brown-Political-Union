@@ -1,26 +1,31 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 
+const baseParties = {
+    image: "",
+    name: "",
+    blurbs: "",
+};
+
 const ModifiableAddPartiesCard = () => {
     const [currentImage, setCurrentImage] = useState();
-    const [newEvent, setNewEvent] = useState({
-        name: "",
-        image: "",
-        blurbs: "",
-    });
+    const [newParty, setNewParty] = useState(baseParties);
     const submitParties = async () => {
         const firestore = getFirestore();
-        setCurrentImage(newEvent.image);
-        await addDoc(collection(firestore, "parties"), newEvent);
+        setCurrentImage(newParty.image);
+        await addDoc(collection(firestore, "parties"), newParty);
+        setNewParty(baseParties)
     };
-    const handleInputChange = (event) => {
-        event.preventDefault();
-        let value = event.target.value;
-        setNewEvent({
-            ...newEvent,
-            [event.target.name]: value,
+    const handleInputChange = (e) => {
+        e.prPartyDefault();
+        let value = e.target.value;
+        setNewParty({
+            ...newParty,
+            [e.target.name]: value,
         });
     };
+
+    const { name, image, blurbs } = newParty
 
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
@@ -29,7 +34,7 @@ const ModifiableAddPartiesCard = () => {
                 <input
                     name="name"
                     type="text"
-                    defaultValue={""}
+                    value={name}
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -39,7 +44,7 @@ const ModifiableAddPartiesCard = () => {
                     name="blurbs"
                     rows="6"
                     cols="40"
-                    defaultValue={""}
+                    value={blurbs}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -50,7 +55,7 @@ const ModifiableAddPartiesCard = () => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={""}
+                        value={image}
                     />
                 </p>
                 <button

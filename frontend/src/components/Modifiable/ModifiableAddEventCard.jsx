@@ -3,23 +3,24 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
+const baseEvent = {
+    description: "",
+    image: "",
+    title: "",
+    virtual: true,
+    when: Timestamp.now(),
+    where: "",
+}
 
 const ModifiableAddEventCard = () => {
     const [currentImage, setCurrentImage] = useState();
-    const [newEvent, setNewEvent] = useState({
-        description: "",
-        image: "",
-        title: "",
-        virtual: true,
-        when: Timestamp.now(),
-        where: "",
-    });
+    const [newEvent, setNewEvent] = useState(baseEvent);
     const { title, image, description, virtual, when, where } = newEvent;
     const submitEvent = async () => {
         setCurrentImage(newEvent.image);
         const firestore = getFirestore();
         await addDoc(collection(firestore, "events"), newEvent);
+        setNewEvent(baseEvent)
     };
     const handleInputChange = (event) => {
         event.preventDefault();
