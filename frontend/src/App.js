@@ -9,6 +9,8 @@ import Leadership from "./Leadership";
 import Parties from "./Parties";
 // import Contact from "./contact"
 import ConstitutionReact from "./ConstitutionReact";
+import { AuthProvider } from "./firebase/auth";
+import { firebaseInit } from "./firebase/firebase";
 
 // Router : A constant determining the total connection between the home page and
 // the other pages
@@ -29,12 +31,15 @@ const router = createBrowserRouter([
 
 // App : The function that creates the
 function App() {
+  firebaseInit()
   return (
-    <main className="h-screen">
-      <Navbar />
-      <RouterProvider router={router} />
-      <Footnote />
-    </main>
+    <AuthProvider>
+      <main className="h-screen">
+        <Navbar />
+        <RouterProvider router={router} />
+        <Footnote />
+      </main>
+    </AuthProvider>
   );
 }
 

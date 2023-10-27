@@ -1,34 +1,33 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
 
+const baseLead = {
+    image: "",
+    name: "",
+    position: "",
+    blurbs: "",
+};
+
 const ModifiableAddLeadCard = () => {
-    const firestore = getFirestore();
     const [currentImage, setCurrentImage] = useState();
-    const [newEvent, setNewEvent] = useState({
-        image: "",
-        name: "",
-        position: "",
-        blurbs: "",
-    });
+    const [newLead, setNewLead] = useState(baseLead);
 
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        setNewEvent({
-            ...newEvent,
+        setNewLead({
+            ...newLead,
             [event.target.name]: value,
         });
     };
 
     const submitLead = async () => {
-        setCurrentImage(newEvent.image);
-        await addDoc(collection(firestore, "leadership"), {
-            image: newEvent.image,
-            name: newEvent.name,
-            position: newEvent.position,
-            blurbs: newEvent.blurbs,
-        });
+        const firestore = getFirestore();
+        setCurrentImage(newLead.image);
+        await addDoc(collection(firestore, "leadership"), newLead);
+        setNewLead(baseLead)
     };
+    const { name, image, position, blurbs } = newLead
 
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
@@ -37,9 +36,9 @@ const ModifiableAddLeadCard = () => {
                 <input
                     name="name"
                     type="text"
-                    defaultValue={""}
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
+                    value={name}
                 />
                 <div className="my-2">
                     <span className="font-bold">Position: </span>
@@ -47,8 +46,8 @@ const ModifiableAddLeadCard = () => {
                         name="position"
                         type="text"
                         className="bg-white p-1"
-                        defaultValue={""}
                         onChange={handleInputChange}
+                        value={position}
                     />
                 </div>
                 <span className="font-bold">Description: </span>
@@ -56,9 +55,9 @@ const ModifiableAddLeadCard = () => {
                     name="blurbs"
                     rows="6"
                     cols="40"
-                    defaultValue={""}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
+                    value={blurbs}
                 />
                 <p className="my-2">
                     <span className="font-bold">Image: </span>
@@ -67,7 +66,7 @@ const ModifiableAddLeadCard = () => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={""}
+                        value={image}
                     />
                 </p>
                 <button

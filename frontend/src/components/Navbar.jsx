@@ -1,3 +1,5 @@
+import { useAuth } from "../firebase/auth";
+
 const buttons = [
   { name: "About Us", link: "/about" },
   { name: "Events", link: "/events" },
@@ -5,7 +7,6 @@ const buttons = [
   { name: "Parties", link: "/parties" },
   { name: "Leadership", link: "/leadership" },
   { name: "Contact", link: "/contact" },
-  { name: "Login", link: "/admin" }
 ];
 
 const NavbarButton = ({ name, link }) => {
@@ -17,6 +18,7 @@ const NavbarButton = ({ name, link }) => {
 };
 
 const Navbar = () => {
+  const { isLoggedIn } = useAuth()
   return (
     <section className="md:fixed flex w-full bg-gray-200 justify-between items-center flex-wrap top-0 px-5 md:px-20 py-3 z-50 drop-shadow-lg">
       <a className="w-10 text-3xl md:text-5xl text-white font-bold" href="/">
@@ -26,6 +28,7 @@ const Navbar = () => {
         {buttons.map(({ name, link }, i) => (
           <NavbarButton name={name} link={link} key={i} />
         ))}
+        {isLoggedIn ? <NavbarButton name="Admin" link="/admin" /> : <NavbarButton name="Login" link="/login" />}
       </div>
     </section>
   );

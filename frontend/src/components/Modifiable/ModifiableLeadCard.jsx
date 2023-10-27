@@ -1,32 +1,23 @@
-import {useState} from "react";
+import { useModifiableCard } from "../../firebase/hooks/useModifiableCard";
 
-const ModifiableLeadCard = ({firebase,id,image,name,position,blurbs}) => {
-    const [currentImage, setCurrentImage] = useState(image);
-    const [newEvent, setNewEvent] = useState({
-        image: image,
-        name: name,
-        position: position,
-        blurbs: blurbs,
-    });
+const ModifiableLeadCard = (props) => {
+    const { id, ...baseLead } = props;
+    const {
+        currentImage,
+        currentData,
+        setCurrentData,
+        modifyCard,
+        deleteCard,
+    } = useModifiableCard("leadership", id, baseLead);
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
-        setNewEvent({
-            ...newEvent,
+        setCurrentData({
+            ...currentData,
             [event.target.name]: value,
         });
     };
-
-    const modify = async () => {
-        setCurrentImage(newEvent.image);
-        firebase.modifyGeneral("leadership", id, newEvent);
-    };
-
-    const deleteEvent = async () => {
-        setCurrentImage(newEvent.image);
-        await firebase.deleteGeneral(id, "leadership")
-    };
-
+    const { name, image, position, blurbs } = currentData;
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
@@ -34,7 +25,7 @@ const ModifiableLeadCard = ({firebase,id,image,name,position,blurbs}) => {
                 <input
                     name="name"
                     type="text"
-                    defaultValue={name}
+                    value={name}
                     placeholder={name}
                     className="font-bold text-2xl mb-1 p-1"
                     onChange={handleInputChange}
@@ -45,7 +36,7 @@ const ModifiableLeadCard = ({firebase,id,image,name,position,blurbs}) => {
                         name="position"
                         type="text"
                         className="bg-white p-1"
-                        defaultValue={position}
+                        value={position}
                         onChange={handleInputChange}
                     />
                 </div>
@@ -54,7 +45,7 @@ const ModifiableLeadCard = ({firebase,id,image,name,position,blurbs}) => {
                     name="blurbs"
                     rows="6"
                     cols="40"
-                    defaultValue={blurbs}
+                    value={blurbs}
                     className="mb-1 p-1"
                     onChange={handleInputChange}
                 />
@@ -65,18 +56,18 @@ const ModifiableLeadCard = ({firebase,id,image,name,position,blurbs}) => {
                         name="image"
                         onChange={handleInputChange}
                         type="text"
-                        defaultValue={image}
+                        value={image}
                     />
                 </p>
                 <button
                     className="font-bold border-2 p-1 mt-5 rounded-md border-slate-400 bg-green-600 text-white hover:bg-green-800"
-                    onClick={modify}
+                    onClick={modifyCard}
                 >
                     Modify
                 </button>
                 <button
                     className="font-bold border-2 p-1 mt-5 ml-4 rounded-md border-slate-400 bg-red-600 text-white hover:bg-red-800"
-                    onClick={deleteEvent}
+                    onClick={deleteCard}
                 >
                     Delete
                 </button>

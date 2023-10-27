@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
 import "../App.css";
-import { useFirebase } from "../firebase";
+import { useAuth } from '../firebase/auth';
+import { useCollection } from '../firebase/hooks/useCollection';
 import ModifiableAddEventCard from "./Modifiable/ModifiableAddEventCard";
 import ModifiableAddLeadCard from "./Modifiable/ModifiableAddLeadCard";
 import ModifiableAddPartiesCard from "./Modifiable/ModifiableAddPartiesCard";
@@ -8,20 +10,10 @@ import ModifiableEventCard from "./Modifiable/ModifiableEventCard";
 import ModifiableLeadCard from "./Modifiable/ModifiableLeadCard";
 import ModifiablePartiesCard from "./Modifiable/ModifiablePartiesCard";
 
-const Dashboard = ({ signOut }) => {
-  const [events, setEvents] = useState([]);
-  const [parties, setParties] = useState([]);
-  const [leader, setLeaders] = useState([]);
-  const firebase = useFirebase();
-  
-  useEffect(() => {
-    async function fetch() {
-      setEvents((await firebase.getAllGenDocs("events")).sort());
-      setParties((await firebase.getAllGenDocs("parties")).sort());
-      setLeaders((await firebase.getAllGenDocs("leadership")).sort());
-    }
-    fetch();
-  }, [firebase]);
+const Dashboard = () => {
+  const events = useCollection("events");
+  const parties = useCollection("parties");
+  const leaders = useCollection("leadership");
 
   return (
       <div>
@@ -29,19 +21,10 @@ const Dashboard = ({ signOut }) => {
               <h3 className="font-bold text-3xl text-center">Admin Dashboard</h3>
               <h3 className="font-bold text-3xl">Events : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {events.map((event, i) => {
-                      const data = event.data();
+                  {events.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiableEventCard
-                                  id={event.id}
-                                  image={data.image}
-                                  virtual={data.virtual}
-                                  title={data.title}
-                                  description={data.description}
-                                  where={data.where}
-                                  when={data.when.toDate()}
-                              />
+                        <div className="my-2" key={data.id}>
+                              <ModifiableEventCard {...data} />
                           </div>
                       );
                   })}
@@ -51,17 +34,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <h3 className="font-bold text-3xl">Parties : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {parties.map((part, i) => {
-                      const data = part.data();
+                  {parties.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiablePartiesCard
-                                  firebase={firebase}
-                                  id={part.id}
-                                  name={data.name}
-                                  image={data.image}
-                                  blurbs={data.blurbs}
-                              />
+                          <div className="my-2" key={data.id}>
+                              <ModifiablePartiesCard {...data} />
                           </div>
                       );
                   })}
@@ -71,18 +47,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <h3 className="font-bold text-3xl my-5">Leadership : </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
-                  {leader.map((part, i) => {
-                      const data = part.data();
+                  {leaders.map((data) => {
                       return (
-                          <div className="my-2" key={i}>
-                              <ModifiableLeadCard
-                                  firebase={firebase}
-                                  id={part.id}
-                                  name={data.name}
-                                  image={data.image}
-                                  position={data.position}
-                                  blurbs={data.blurbs}
-                              />
+                          <div className="my-2" key={data.id}>
+                              <ModifiableLeadCard {...data} />
                           </div>
                       );
                   })}
@@ -92,7 +60,10 @@ const Dashboard = ({ signOut }) => {
               </div>
               <button
                   className="font-bold border-2 p-2 rounded-md border-slate-400 bg-gray-600 text-white hover:bg-[#650202] mb-5"
-                  onClick={signOut}
+                  onClick={async () => {
+                    const auth = getAuth()
+                    await auth.signOut()
+                  }}
               >
                   Sign out
               </button>
@@ -101,7 +72,19 @@ const Dashboard = ({ signOut }) => {
   );
 };
 
-const LogInSection = ({ signIn, setEmail, setPassword }) => {
+const LogInSection = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const auth = getAuth();
+  const signIn = async () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .catch((error) => {
+        console.error(error.code, error.message);
+      });
+  }
+
+
   const handleInputChange = (event) => {
     event.preventDefault();
     const name = event.target.name;
@@ -145,41 +128,15 @@ const LogInSection = ({ signIn, setEmail, setPassword }) => {
 };
 
 const Admin = () => {
-  const firebase = useFirebase();
-
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const signIn = async () => {
-    await firebase.signIn(email, password);
-  };
-
-  const signOut = async () => {
-    await firebase.auth.signOut();
-    setLoggedIn(false);
-  };
-
-  useEffect(() => {
-    firebase.auth.onAuthStateChanged(async (user) => {
-      if (!user) return;
-      setLoggedIn(true);
-    });
-  }, [firebase]);
+  const {isLoggedIn} = useAuth()
 
   return (
     <div>
       <div className="mt-40 mx-auto max-w-screen-lg px-8">
-        {loggedIn ? (
-          <Dashboard
-              signOut={signOut}
-          />
+        {isLoggedIn ? (
+          <Dashboard />
         ) : (
-          <LogInSection
-            signIn={signIn}
-            setEmail={setEmail}
-            setPassword={setPassword}
-          />
+          <LogInSection />
         )}
       </div>
     </div>
