@@ -19,7 +19,7 @@ const Dashboard = () => {
       <div>
           <section>
               <h3 className="font-bold text-3xl text-center">Admin Dashboard</h3>
-              <h3 className="font-bold text-3xl">Events : </h3>
+              <h3 className="font-bold text-3xl">Events: </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
                   {events.map((data) => {
                       return (
@@ -32,7 +32,7 @@ const Dashboard = () => {
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
                   <ModifiableAddEventCard/>
               </div>
-              <h3 className="font-bold text-3xl">Parties : </h3>
+              <h3 className="font-bold text-3xl">Parties: </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
                   {parties.map((data) => {
                       return (
@@ -45,7 +45,7 @@ const Dashboard = () => {
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
                   <ModifiableAddPartiesCard/>
               </div>
-              <h3 className="font-bold text-3xl my-5">Leadership : </h3>
+              <h3 className="font-bold text-3xl my-5">Leadership: </h3>
               <div className="grid pb-16 mx-auto px-8 grid-cols-1 gap-8">
                   {leaders.map((data) => {
                       return (

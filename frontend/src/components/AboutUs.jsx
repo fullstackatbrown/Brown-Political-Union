@@ -1,4 +1,4 @@
-const AboutSection = ({ subtitle, title, description, image, reverse }) => {
+const AboutSection = ({ subtitle, title, description, image, reverse, alt }) => {
   return (
     <section
       className={`flex flex-col-reverse ${
@@ -13,6 +13,7 @@ const AboutSection = ({ subtitle, title, description, image, reverse }) => {
       <img
         className="object-cover rounded-md h-auto w-52 drop-shadow-lg"
         src={image}
+        alt={alt}
       />
     </section>
   );
@@ -32,6 +33,7 @@ const AboutUs = () => {
     <div className="mt-40 pb-16 mx-auto max-w-screen-md px-8">
       <AboutSection
         subtitle={"About BPU"}
+        alt={"Picture of the US Capitol"}
         title={"We are a non-partisan student run organization."}
         description={
           "The Brown Political Union is a nonpartisan student-run organization dedicated to providing a forum for respectful political discourse on campus. From discussions on important policy issues to speaker series to social debate and election watch night events, the BPU is the best place on campus to talk politics in a cordial and low-stress environment."
@@ -42,6 +44,7 @@ const AboutUs = () => {
       <AboutSection
         subtitle={"Our Vision"}
         title={"We aim to promote facts."}
+        alt={"Picture of the handles on the Brown Gates"}
         description={
           "We believe in advancing student understanding of foreign and domestic policy by promoting facts, seeking nuance, and challenging preconceptions. Above all, the BPU works to bridge partisan divides and foster respect for the freedom of speech among the Brown student community."
         }
