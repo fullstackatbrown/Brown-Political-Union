@@ -12,7 +12,7 @@ const ModifiableEventCard = (props) => {
         setCurrentData,
         modifyCard,
         deleteCard,
-    } = useModifiableCard("events", id, baseEvent);
+    } = useModifiableCard("events", id, baseEvent, "Event");
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;
@@ -68,7 +68,7 @@ const ModifiableEventCard = (props) => {
                         className="p-1"
                     />
                 </p>
-                <p className="my-2">
+                <div className="my-2">
                     <span className="font-bold">When: </span>
                     <DatePicker
                         showIcon
@@ -80,7 +80,7 @@ const ModifiableEventCard = (props) => {
                         showTimeInput
                         dateFormat="Pp"
                     />
-                </p>
+                </div>
                 <p className="my-2">
                     <span className="font-bold">Image: </span>
                     <input

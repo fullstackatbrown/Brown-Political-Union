@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import Leadership from "./Leadership";
 import Parties from "./Parties";
 // import Contact from "./contact"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import ConstitutionReact from "./ConstitutionReact";
 import { AuthProvider } from "./firebase/auth";
 import { firebaseInit } from "./firebase/firebase";
@@ -38,6 +40,7 @@ function App() {
         <Navbar />
         <RouterProvider router={router} />
         <Footnote />
+        <ToastContainer position="bottom-right"/>
       </main>
     </AuthProvider>
   );

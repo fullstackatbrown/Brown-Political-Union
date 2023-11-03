@@ -21,10 +21,10 @@ const Event = ({ image, virtual, title, description, where, when }) => {
               where
             )}
           </p>
-          <p>
+          <div>
             <span className="font-bold">When: </span>
             {format(when.toDate(), 'h:mm a, E MMM d, yyyy')}
-          </p>
+          </div>
         </div>
       </div>
     </div>

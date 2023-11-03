@@ -2,6 +2,7 @@ import { Timestamp, addDoc, collection, getFirestore } from "firebase/firestore"
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 
 const baseEvent = {
     description: "",
@@ -19,7 +20,12 @@ const ModifiableAddEventCard = () => {
     const submitEvent = async () => {
         setCurrentImage(newEvent.image);
         const firestore = getFirestore();
-        await addDoc(collection(firestore, "events"), newEvent);
+        try {
+            await addDoc(collection(firestore, "events"), newEvent);
+            toast.success("Event added!");
+        } catch (e) {
+            toast.error("Error adding event");
+        }
         setNewEvent(baseEvent)
     };
     const handleInputChange = (event) => {
@@ -33,6 +39,8 @@ const ModifiableAddEventCard = () => {
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
+                <h2 className="text-2xl font-bold pb-2">Create a New Event</h2>
+                <hr className="flex-grow border-t border-gray-400 pb-3"/> 
                 <span className="font-bold">Title: </span>
                 <input
                     name="title"
@@ -75,7 +83,7 @@ const ModifiableAddEventCard = () => {
                         className="p-1"
                     />
                 </p>
-                <p className="my-2">
+                <div className="my-2">
                     <span className="font-bold">When: </span>
                     <DatePicker
                         showIcon
@@ -87,7 +95,7 @@ const ModifiableAddEventCard = () => {
                         showTimeInput
                         dateFormat="Pp"
                     />
-                </p>
+                </div>
                 <p className="my-2">
                     <span className="font-bold">Image: </span>
                     <input
