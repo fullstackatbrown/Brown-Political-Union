@@ -46,7 +46,7 @@ const Footnote = () => {
                     Leadership
                 </div>
                 <div className="text-2xl text-[#650202] font-bold inline-block">
-                    Contact
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdSC_VzIloUZ37vlAICG21CtEdShoidBJuHIbnGSh-PIBNzbA/viewform">Contact</a>
                 </div>
             </div>
         </section>
