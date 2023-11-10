@@ -1,3 +1,5 @@
+import Leadership from "../Leadership"
+
 const AboutSection = ({ subtitle, title, description, image, reverse }) => {
   return (
     <section
@@ -68,6 +70,9 @@ const AboutUs = () => {
           title="Value"
           description="This is a description of a value. This is a description of a value. This is a description of a value."
         />
+      </div>
+      <div>
+        <Leadership></Leadership>
       </div>
     </div>
   );

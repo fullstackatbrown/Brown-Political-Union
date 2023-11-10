@@ -5,7 +5,7 @@ import { default as Event, default as Events } from "./components/Events";
 import Footnote from "./components/Footnote";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-import Leadership from "./Leadership";
+// import Leadership from "./Leadership";
 import Parties from "./Parties";
 // import Contact from "./contact"
 import ConstitutionReact from "./ConstitutionReact";
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
   { path: "/events", element: <Events /> },
   { path: "/admin", element: <Admin /> },
   { path: "/events", element: <Event /> },
-  { path: "/leadership", element: <Leadership /> },
+  // { path: "/leadership", element: <Leadership /> },
   { path: "/constitution", element: <ConstitutionReact /> },
   // { path: "/contact", element: <Contact /> },
   { path: "/parties", element: <Parties /> },

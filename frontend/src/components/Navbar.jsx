@@ -5,7 +5,7 @@ const buttons = [
   { name: "Events", link: "/events" },
   { name: "Constitution", link: "/constitution" },
   { name: "Parties", link: "/parties" },
-  { name: "Leadership", link: "/leadership" },
+  // { name: "Leadership", link: "/leadership" },
   // { name: "Contact", link: "/contact" },
 ];
 
