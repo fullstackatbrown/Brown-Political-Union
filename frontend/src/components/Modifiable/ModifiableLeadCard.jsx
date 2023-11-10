@@ -8,7 +8,7 @@ const ModifiableLeadCard = (props) => {
         setCurrentData,
         modifyCard,
         deleteCard,
-    } = useModifiableCard("leadership", id, baseLead);
+    } = useModifiableCard("leadership", id, baseLead, "Leadership Card");
     const handleInputChange = (event) => {
         event.preventDefault();
         let value = event.target.value;

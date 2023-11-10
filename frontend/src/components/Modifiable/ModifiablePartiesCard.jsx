@@ -9,7 +9,7 @@ const ModifiablePartiesCard = (props) => {
         setCurrentData,
         modifyCard,
         deleteCard,
-    } = useModifiableCard("parties", id, baseParty);
+    } = useModifiableCard("parties", id, baseParty, "Party");
     const { name, image, blurbs } = currentData;
     const handleInputChange = (event) => {
         event.preventDefault();

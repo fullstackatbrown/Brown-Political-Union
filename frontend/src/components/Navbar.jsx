@@ -28,7 +28,7 @@ const Navbar = () => {
         {buttons.map(({ name, link }, i) => (
           <NavbarButton name={name} link={link} key={i} />
         ))}
-        {isLoggedIn ? <NavbarButton name="Admin" link="/admin" /> : <NavbarButton name="Login" link="/login" />}
+        <NavbarButton name={isLoggedIn ? "Admin" : "Login"} link="/admin" />
       </div>
     </section>
   );

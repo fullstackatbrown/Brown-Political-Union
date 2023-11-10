@@ -1,5 +1,6 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const baseLead = {
     image: "",
@@ -24,7 +25,12 @@ const ModifiableAddLeadCard = () => {
     const submitLead = async () => {
         const firestore = getFirestore();
         setCurrentImage(newLead.image);
-        await addDoc(collection(firestore, "leadership"), newLead);
+        try {
+            await addDoc(collection(firestore, "leadership"), newLead);
+            toast.success("New leader added!");
+        } catch (e) {
+            toast.error("Error adding new leader");
+        }
         setNewLead(baseLead)
     };
     const { name, image, position, blurbs } = newLead
@@ -32,6 +38,8 @@ const ModifiableAddLeadCard = () => {
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
             <div className="pt-2 pb-4 px-4">
+                <h2 className="text-2xl font-bold pb-2">Add a New Club Leader</h2>
+                <hr className="flex-grow border-t border-gray-400 pb-3"/>
                 <span className="font-bold">Name: </span>
                 <input
                     name="name"

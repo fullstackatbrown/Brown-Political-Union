@@ -1,5 +1,6 @@
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const baseParties = {
     image: "",
@@ -13,11 +14,15 @@ const ModifiableAddPartiesCard = () => {
     const submitParties = async () => {
         const firestore = getFirestore();
         setCurrentImage(newParty.image);
-        await addDoc(collection(firestore, "parties"), newParty);
+        try {
+            await addDoc(collection(firestore, "parties"), newParty);
+            toast.success("Party added!");
+        } catch (e) {
+            toast.error("Error adding party");
+        }
         setNewParty(baseParties)
     };
     const handleInputChange = (e) => {
-        e.prPartyDefault();
         let value = e.target.value;
         setNewParty({
             ...newParty,
@@ -29,7 +34,9 @@ const ModifiableAddPartiesCard = () => {
 
     return (
         <div className="bg-gray-200 rounded-md flex justify-between">
-            <div className="pt-2 pb-4 px-4">
+            <div className="pt-2 px-4">
+                <h2 className="text-2xl font-bold pb-2">Create a New Party</h2>
+                <hr className="flex-grow border-t border-gray-400 pb-3"/> 
                 <span className="font-bold">Name: </span>
                 <input
                     name="name"

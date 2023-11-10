@@ -4,7 +4,7 @@ import { useCollection } from "../firebase/hooks/useCollection";
 const EventCard = ({ image, virtual, title, description, where, when }) => {
   return (
     <div className="bg-gray-200 rounded-md">
-      <img className="object-cover rounded-t-md" src={image} />
+      <img className="object-cover rounded-t-md" src={image} alt=""/>
       <div className="pt-2 pb-4 px-4">
         <h3 className="font-bold text-2xl mb-0">{title}</h3>
         <p className="text-slate-600 mb-2">{virtual ? "Virtual" : "In-Person"}</p>
@@ -55,7 +55,11 @@ const Events = () => {
   const [upcoming, setUpcoming] = useState(true);
   const currentDate = new Date();
   const events = useCollection("events");
-
+  const filteredEvents = events.filter((event) => {
+    return upcoming
+      ? event.when.toDate() > currentDate
+      : event.when.toDate() < currentDate;
+  });
   return (
     <div>
       <div className="mt-40 mx-auto max-w-screen-md px-8">
@@ -67,21 +71,15 @@ const Events = () => {
         </section>
       </div>
       <div className="grid pb-16 mx-auto max-w-screen-lg px-8 grid-cols-3 gap-8">
-        {events
-          .filter((event) =>
-            upcoming
-              ? event.when.toDate() > currentDate
-              : event.when.toDate() <= currentDate
-          )
-          .map((event, i) => {
+        {filteredEvents.length > 0 ? filteredEvents.map((event) => {
             return (
               <EventCard
-                key={i}
+                key={event.id}
                 {...event}
                 when={event.when.toDate().toDateString()}
               />
             );
-          })}
+          }) : <p className="text-center">No events to show</p>}
       </div>
     </div>
   );
