@@ -16,6 +16,7 @@ function Collapsible() {
             </div>
         </div>
     );
+    
 }
 function App() {
     return (

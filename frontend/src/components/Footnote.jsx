@@ -26,10 +26,10 @@ const Footnote = () => {
           <div className="text-l text-[#650202]">discourse on campus.</div>
           <div className="mt-6">
             <div className="float-left">
-              <SocialIcon url="https://facebook.com" fgColor="white" />
+            <SocialIcon url="https://www.facebook.com/profile.php?id=100089568716535&mibextid=LQQJ4d" fgColor="white" />
             </div>
             <div className="ml-4 float-left">
-              <SocialIcon url="https://instagram.com" fgColor="white" />
+                <SocialIcon url="https://www.instagram.com/brownpoliticalunion/" fgColor="white"/>
             </div>
           </div>
         </div>

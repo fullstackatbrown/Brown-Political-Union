@@ -1,8 +1,12 @@
-import './App.css';
+// import { useState } from 'react';
+// import './App.css';
+// import Constitution from "./components/Constitution";
+import React from 'react';
+import Accordion from './components/Accordion';
 import constitution from "./data/constitution.json";
-import Constitution from "./components/Constitution";
 
-function ConstitutionReact() {
+
+const ConstitutionReact = () => {
     return (
         <div className="px-24">
             <div className="mt-32 justify-center">
@@ -13,20 +17,19 @@ function ConstitutionReact() {
                     Brown Political Union
                 </h3>
             </div>
-            <div className="mt-20">
-                {constitution
-                    .map((cont, i) => {
-                        return (
-                            <Constitution
-                                key={i}
-                                head={cont.header}
-                                content={cont.info}
-                            />
-                        );
-                    })}
+            <div>
+            <h1>The BPU follows a set of principles to guide the organization's mission, brand, and purpose.</h1>
+            <div className="accordion">
+                {constitution.map(({ header, info }) => (
+                <Accordion title={header} content={info} />
+                ))}
             </div>
-        </div>
-    );
+            </div>
+        </div> 
+    )
 }
 
 export default ConstitutionReact;
+
+
+
