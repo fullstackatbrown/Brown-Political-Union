@@ -14,7 +14,7 @@ const Hero = () => {
   };
   return (
     <div className="relative h-3/4 md:h-screen bg-cover bg-fixed bg-auto md:bg-cover">
-      <div className="absolute top-0 right-0 bottom-0 left-0 w-full h-full  bg-fixed justify-center content-center flex flex-col">
+      <div className="absolute top-0 right-0 bottom-0 left-0 w-100 h-full  bg-fixed justify-center content-center flex flex-col overflow-hidden">
         <div
           className="flex h-full transition-transform ease-in-out duration-300"
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
