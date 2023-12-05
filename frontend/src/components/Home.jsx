@@ -35,7 +35,7 @@ const Home = () => {
         ) : (
           <div className="pr-16">
             <div className="flex justify-between mb-2">
-              <h1 className="text-3xl"> Past Events </h1>
+              <h1 className="text-3xl"> Previously at the BPU </h1>
               <button
                 className="bg-[#9D0600] text-white py-2 px-3 uppercase"
                 onClick={() => setUpcoming(true)}
