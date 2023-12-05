@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 
-const Event = ({ image, virtual, title, description, where, when }) => {
+const Event = ({ image, virtual, title, description, where, registration, when }) => {
   return (
     <div className="flex flex-col md:flex-row mb-12 drop-shadow-lg">
       <div className="flex mr-16 justify-center align-center w-full md:w-auto">
@@ -24,6 +24,10 @@ const Event = ({ image, virtual, title, description, where, when }) => {
           <div>
             <span className="font-bold">When: </span>
             {format(when.toDate(), 'h:mm a, E MMM d, yyyy')}
+          </div>
+          <div>
+            <span className="font-bold">Register Here: </span>
+            {registration}
           </div>
         </div>
       </div>

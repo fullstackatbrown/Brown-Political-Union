@@ -1,13 +1,23 @@
 import { useState } from "react";
 import { useCollection } from "../firebase/hooks/useCollection";
 
-const EventCard = ({ image, virtual, title, description, where, when }) => {
+const EventCard = ({
+  image,
+  virtual,
+  title,
+  description,
+  where,
+  registration,
+  when,
+}) => {
   return (
     <div className="bg-gray-200 rounded-md">
-      <img className="object-cover rounded-t-md" src={image} alt=""/>
+      <img className="object-cover rounded-t-md" src={image} alt="" />
       <div className="pt-2 pb-4 px-4">
         <h3 className="font-bold text-2xl mb-0">{title}</h3>
-        <p className="text-slate-600 mb-2">{virtual ? "Virtual" : "In-Person"}</p>
+        <p className="text-slate-600 mb-2">
+          {virtual ? "Virtual" : "In-Person"}
+        </p>
         <p className="mb-3">{description}</p>
         <p>
           <span className="font-bold">Where: </span>
@@ -22,6 +32,12 @@ const EventCard = ({ image, virtual, title, description, where, when }) => {
         <p>
           <span className="font-bold">When: </span>
           {when}
+        </p>
+        <p style={{display: registration? "in-line" : "none"}}>
+          <span className="font-bold">Register Here: </span>
+          <a className="text-cyan-600 hover:text-blue-800" href={registration}>
+            Link
+          </a>
         </p>
       </div>
     </div>
