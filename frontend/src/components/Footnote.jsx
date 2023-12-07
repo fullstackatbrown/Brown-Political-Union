@@ -36,19 +36,19 @@ const Footnote = () => {
 
         <div className="float-right grid grid-rows-2 grid-flow-col gap-6 pt-12 pr-20">
           <div className="text-2xl text-[#650202] font-bold inline-block">
-            About Us
+          <a href="/about">About Us</a>
           </div>
           <div className="text-2xl text-[#650202] font-bold inline-block">
-            Events
+          <a href="/events">Events</a>
           </div>
           <div className="text-2xl text-[#650202] font-bold inline-block">
-            Constitution
+            <a href="/constitution">Constitution</a>
           </div>
           <div className="text-2xl text-[#650202] font-bold inline-block">
-            Parties
+            <a href="/parties">Parties</a>
           </div>
           <div className="text-2xl text-[#650202] font-bold inline-block">
-            Leadership
+          <a href="/leadership">Leadership</a>
           </div>
           <div className="text-2xl text-[#650202] font-bold inline-block">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdSC_VzIloUZ37vlAICG21CtEdShoidBJuHIbnGSh-PIBNzbA/viewform">Contact</a>
